@@ -1,0 +1,151 @@
+canvas {
+   border: 1px solid black;
+   background-color:white;
+}
+
+body {
+   background-color:black;
+   font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+ 
+h2 {
+   font: 36px solid white;
+   color:white;
+}
+
+.top {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+}
+
+.title {
+   display:flex;
+   flex-direction: column;
+   justify-content:center;
+   align-items:center;
+   width: 1280px;
+   height:80px;
+}
+
+.middle {
+   display:flex;
+   justify-content: space-around;
+   flex-direction: row;
+}
+
+.board {
+   width: 1280px;
+   display:flex;
+   justify-content: space-evenly;
+   align-items: center;
+   flex-direction: row;
+   flex-wrap: wrap;
+}
+
+.task {
+   border: 2px solid rgb(182, 142, 9);
+   border-radius: 10%;
+   width: 140px;
+   height: 120px;
+   background-color: steelblue;
+   margin: 8px 2px;
+   font: 16px solid white;
+   font-weight:bold;
+   display:flex;
+   flex-direction: column;
+   justify-content:space-around;
+   align-items:center;
+   color:white;
+}
+
+.task:hover {
+   border: 2px solid rgb(0, 0, 0);
+   border-radius: 10%;
+   width: 140px;
+   height: 120px;
+   background-color:gray;
+   margin: 8px 2px;
+   display:flex;
+   flex-direction: column;
+   justify-content:space-around;
+   align-items:center;
+   color:white;
+}
+
+.name {
+   margin:5px;
+   color:white;
+}
+
+.complete {
+   background-color:green;
+}
+
+.complete:hover {
+   background-color:green;
+}
+
+.incomplete {
+   color: yellow;
+}
+
+.bottom {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+}
+
+.bottomDiv {
+   color:white;
+   width:800px;
+   height:80px;
+   background-color:black;
+   border: 2px solid rgb(182, 142, 9);
+   padding: 10px; 
+   display:flex;
+   justify-content: space-evenly;
+   align-items: center;
+   flex-direction: row;
+   flex-wrap: wrap;
+   margin:20px;
+}
+
+.bottomDivButton {
+   color:white;
+   width: 160px;
+   height:80px;
+   background-color:steelblue;
+   font-size: 16px;
+}
+
+.bottomDivButton:hover {
+   background-color:gray;
+}
+
+.employee {
+   color:white;
+   width:80px;
+   height:80px;
+   margin: 2px;
+   background-color:steelblue;
+   display:flex;
+   justify-content:space-evenly;
+   align-items:center;
+   flex-direction:column;
+   font-size:32px;
+}
+
+.employee:hover {
+   color:steelblue;
+   width:80px;
+   height:80px;
+   margin: 2px;
+   background-color:white;
+   display:flex;
+   justify-content:space-evenly;
+   align-items:center;
+   flex-direction:column;
+   font-size:32px;
+}
+
