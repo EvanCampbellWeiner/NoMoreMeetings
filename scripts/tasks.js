@@ -12,13 +12,14 @@ class Task {
    percentComplete;
    completed = false;
 
-   constructor(height, width) {
-      this.height = height;
-      this.width = width;
-   }
-
-   product() {
-      return (this.width * this.height);
+   constructor(name, expectedTime, actualTime, interruptable, multipleAttempts ) {
+      this.name = name;
+      this.expectedTime = expectedTime;
+      this.actualTime = actualTime;
+      this.interruptable = interruptable;
+      this.multipleAttempts = multipleAttempts;
+      this.percentComplete = 0;
+      this.completed = false;
    }
 
 }
