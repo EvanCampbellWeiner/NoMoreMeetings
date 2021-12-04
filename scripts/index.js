@@ -12,7 +12,7 @@ class Task {
    percentComplete;
    completed = false;
 
-   constructor(name, expectedTime, actualTime, interruptable, multipleAttempts ) {
+   constructor(name, expectedTime, actualTime, interruptable, multipleAttempts) {
       this.name = name;
       this.expectedTime = expectedTime;
       this.actualTime = actualTime;
@@ -29,7 +29,7 @@ class Employee {
    tasksCompleted;
    currentTask;
    name;
-   
+
    constructor(name, strength) {
       this.name = name;
       this.tasksCompleted = 0;
@@ -98,9 +98,12 @@ var currentTask3;
 var currentTask4;
 var startTime;
 var endTime;
+var timer;
+var completedTasks = 0;
+var taskTime = 12;
 
 function initializeTasks() {
-   taskArray[0] = new Task("businesscard", 60, 0, true, false);
+   taskArray[0] = new Task("businesscard", taskTime, 0, true, false);
    taskArray[0].verygood[0] = 'Creativity';
    taskArray[0].good[0] = 'Open';
    taskArray[0].good[1] = 'Perspective';
@@ -128,7 +131,7 @@ function initializeTasks() {
 
 
 
-   taskArray[1] = new Task('proposal', 60, 0, false, false);
+   taskArray[1] = new Task('proposal', taskTime, 0, true, false);
    taskArray[1].verygood[0] = 'Curiousity';
    taskArray[1].good[0] = 'Learning';
    taskArray[1].good[1] = 'Open';
@@ -154,7 +157,7 @@ function initializeTasks() {
    taskArray[1].terrible[3] = 'Forgiveness';
    taskArray[1].terrible[4] = 'Modesty';
 
-   taskArray[2] = new Task('study', 60, 0, false, false);
+   taskArray[2] = new Task('study', taskTime, 0, true, false);
    taskArray[2].verygood[0] = 'Learning';
    taskArray[2].good[0] = 'Perspective';
    taskArray[2].good[1] = 'Persistence';
@@ -180,7 +183,7 @@ function initializeTasks() {
    taskArray[2].terrible[3] = 'Bravery';
    taskArray[2].terrible[4] = 'Zest';
 
-   taskArray[3] = new Task('client', 60, 0, false, false);
+   taskArray[3] = new Task('client', taskTime, 0, false, false);
    taskArray[3].verygood[0] = 'Open';
    taskArray[3].good[0] = 'Curiousity';
    taskArray[3].good[1] = 'Perspective';
@@ -206,7 +209,7 @@ function initializeTasks() {
    taskArray[3].terrible[3] = 'Prudence';
    taskArray[3].terrible[4] = 'Learning';
 
-   taskArray[4] = new Task('investor', 60, 0, false, false);
+   taskArray[4] = new Task('investor', taskTime, 0, false, false);
    taskArray[4].verygood[0] = 'Perspective';
    taskArray[4].good[0] = 'BLAH';
    taskArray[4].good[1] = 'BLAH';
@@ -232,7 +235,7 @@ function initializeTasks() {
    taskArray[4].terrible[3] = 'BLAH';
    taskArray[4].terrible[4] = 'BLAH';
 
-   taskArray[5] = new Task('customer', 60, 0, false, false);
+   taskArray[5] = new Task('customer', taskTime, 0, false, false);
    taskArray[5].verygood[0] = 'Authenticity';
    taskArray[5].good[0] = 'Curiousity';
    taskArray[5].good[1] = 'Learning';
@@ -258,7 +261,7 @@ function initializeTasks() {
    taskArray[5].terrible[3] = 'Teamwork';
    taskArray[5].terrible[4] = 'Beauty';
 
-   taskArray[6] = new Task('trash', 60, 0, false, false);
+   taskArray[6] = new Task('trash', taskTime, 0, false, false);
    taskArray[6].verygood[0] = 'Bravery';
    taskArray[6].good[0] = 'Creativity';
    taskArray[6].good[1] = 'Learning';
@@ -284,7 +287,7 @@ function initializeTasks() {
    taskArray[6].terrible[3] = 'Forgiveness';
    taskArray[6].terrible[4] = 'Self';
 
-   taskArray[7] = new Task('product', 60, 0, false, false);
+   taskArray[7] = new Task('product', taskTime, 0, true, false);
    taskArray[7].verygood[0] = 'Persistence';
    taskArray[7].good[0] = 'Creativity';
    taskArray[7].good[1] = 'Prudence';
@@ -310,7 +313,7 @@ function initializeTasks() {
    taskArray[7].terrible[3] = 'Humour';
    taskArray[7].terrible[4] = 'Forgiveness';
 
-   taskArray[8] = new Task('socialMedia', 60, 0, false, false);
+   taskArray[8] = new Task('socialMedia', taskTime, 0, true, false);
    taskArray[8].verygood[0] = 'Zest';
    taskArray[8].good[0] = 'Creativity';
    taskArray[8].good[1] = 'Perspective';
@@ -336,7 +339,7 @@ function initializeTasks() {
    taskArray[8].terrible[3] = 'Teamwork';
    taskArray[8].terrible[4] = 'Forgiveness';
 
-   taskArray[9] = new Task('donationBin', 60, 0, false, false);
+   taskArray[9] = new Task('donationBin', taskTime, 0, true, false);
    taskArray[0].verygood[0] = 'Kindness';
    taskArray[9].good[0] = 'Religiousness';
    taskArray[9].good[1] = 'Gratitude';
@@ -362,7 +365,7 @@ function initializeTasks() {
    taskArray[9].terrible[3] = 'Bravery';
    taskArray[9].terrible[4] = 'Authenticity';
 
-   taskArray[10] = new Task('fakeReviews', 60, 0, false, false);
+   taskArray[10] = new Task('fakeReviews', taskTime, 0, true, false);
    taskArray[10].verygood[0] = 'Love';
    taskArray[10].good[0] = 'Creativity';
    taskArray[10].good[1] = 'Perspective';
@@ -388,7 +391,7 @@ function initializeTasks() {
    taskArray[10].terrible[3] = 'Persistence';
    taskArray[10].terrible[4] = 'Modesty';
 
-   taskArray[11] = new Task('stakeholders', 60, 0, false, false);
+   taskArray[11] = new Task('stakeholders', taskTime, 0, false, false);
    taskArray[11].verygood[0] = 'Social';
    taskArray[11].good[0] = 'Curiousity';
    taskArray[11].good[1] = 'Learning';
@@ -414,7 +417,7 @@ function initializeTasks() {
    taskArray[11].terrible[3] = 'Religiousness';
    taskArray[11].terrible[4] = 'Bravery';
 
-   taskArray[12] = new Task('accessibility', 60, 0, false, false);
+   taskArray[12] = new Task('accessibility', taskTime, 0, true, false);
    taskArray[12].verygood[0] = 'Fairness';
    taskArray[12].good[0] = 'Religiousness';
    taskArray[12].good[1] = 'Prudence';
@@ -440,7 +443,7 @@ function initializeTasks() {
    taskArray[12].terrible[3] = 'Zest';
    taskArray[12].terrible[4] = 'Creativity';
 
-   taskArray[13] = new Task('yell', 60, 0, false, false);
+   taskArray[13] = new Task('yell', taskTime, 0, false, false);
    taskArray[13].verygood[0] = 'Leadership';
    taskArray[13].good[0] = 'Bravery';
    taskArray[13].good[1] = 'Zest';
@@ -466,7 +469,7 @@ function initializeTasks() {
    taskArray[13].terrible[3] = 'Kindness';
    taskArray[13].terrible[4] = 'Love';
 
-   taskArray[14] = new Task('support', 60, 0, false, false);
+   taskArray[14] = new Task('support', taskTime, 0, false, false);
    taskArray[14].verygood[0] = 'Teamwork';
    taskArray[14].good[0] = 'Learning';
    taskArray[14].good[1] = 'Social';
@@ -492,7 +495,7 @@ function initializeTasks() {
    taskArray[14].terrible[3] = 'Leadership';
    taskArray[14].terrible[4] = 'Hope';
 
-   taskArray[15] = new Task('fix', 60, 0, false, false);
+   taskArray[15] = new Task('fix', taskTime, 0, true, false);
    taskArray[15].verygood[0] = 'Forgiveness';
    taskArray[15].good[0] = 'Creativity';
    taskArray[15].good[1] = 'Bravery';
@@ -518,7 +521,7 @@ function initializeTasks() {
    taskArray[15].terrible[3] = 'Fairness';
    taskArray[15].terrible[4] = 'Leadership';
 
-   taskArray[16] = new Task('report', 60, 0, false, false);
+   taskArray[16] = new Task('report', taskTime, 0, false, false);
    taskArray[16].verygood[0] = 'Modesty';
    taskArray[16].good[0] = 'Perspective';
    taskArray[16].good[1] = 'Authenticity';
@@ -544,7 +547,7 @@ function initializeTasks() {
    taskArray[16].terrible[3] = 'Zest';
    taskArray[16].terrible[4] = 'Religiousness';
 
-   taskArray[17] = new Task('evaluate', 60, 0, false, false);
+   taskArray[17] = new Task('evaluate', taskTime, 0, false, false);
    taskArray[17].verygood[0] = 'Prudence';
    taskArray[17].good[0] = 'Learning';
    taskArray[17].good[1] = 'Perspective';
@@ -570,7 +573,7 @@ function initializeTasks() {
    taskArray[17].terrible[3] = 'Love';
    taskArray[17].terrible[4] = 'Modesty';
 
-   taskArray[18] = new Task('minesweeper', 60, 0, false, false);
+   taskArray[18] = new Task('minesweeper', taskTime, 0, true, false);
    taskArray[18].verygood[0] = 'Self';
    taskArray[18].good[0] = 'Open';
    taskArray[18].good[1] = 'Bravery';
@@ -596,7 +599,7 @@ function initializeTasks() {
    taskArray[18].terrible[3] = 'Persistence';
    taskArray[18].terrible[4] = 'Teamwork';
 
-   taskArray[19] = new Task('flowers', 60, 0, false, false);
+   taskArray[19] = new Task('flowers', taskTime, 0, false, false);
    taskArray[19].verygood[0] = 'Beauty';
    taskArray[19].good[0] = 'Creativity';
    taskArray[19].good[1] = 'Bravery';
@@ -622,7 +625,7 @@ function initializeTasks() {
    taskArray[19].terrible[3] = 'Prudence';
    taskArray[19].terrible[4] = 'Hope';
 
-   taskArray[20] = new Task('thankyoucard', 60, 0, false, false);
+   taskArray[20] = new Task('thankyoucard', taskTime, 0, true, false);
    taskArray[20].verygood[0] = 'Gratitude';
    taskArray[20].good[0] = 'Perspective';
    taskArray[20].good[1] = 'Kindness';
@@ -648,7 +651,7 @@ function initializeTasks() {
    taskArray[20].terrible[3] = 'Hope';
    taskArray[20].terrible[4] = 'Humour';
 
-   taskArray[21] = new Task('graph', 60, 0, false, false);
+   taskArray[21] = new Task('graph', taskTime, 0, true, false);
    taskArray[21].verygood[0] = 'Hope';
    taskArray[21].good[0] = 'Creativity';
    taskArray[21].good[1] = 'Religiousness';
@@ -674,7 +677,7 @@ function initializeTasks() {
    taskArray[21].terrible[3] = 'Persistence';
    taskArray[21].terrible[4] = 'Fairness';
 
-   taskArray[22] = new Task('roast', 60, 0, false, false);
+   taskArray[22] = new Task('roast', taskTime, 0, true, false);
    taskArray[22].verygood[0] = 'Humour';
    taskArray[22].good[0] = 'Creativity';
    taskArray[22].good[1] = 'Perspective';
@@ -700,7 +703,7 @@ function initializeTasks() {
    taskArray[22].terrible[3] = 'Love';
    taskArray[22].terrible[4] = 'Leadership';
 
-   taskArray[23] = new Task('holidays', 60, 0, false, false);
+   taskArray[23] = new Task('holidays', taskTime, 0, true, false);
    taskArray[23].verygood[0] = 'Religiousness';
    taskArray[23].good[0] = 'Curiousity';
    taskArray[23].good[1] = 'Perspective';
@@ -740,25 +743,18 @@ function switchToMainGame() {
    game.classList.remove('hidden');
    footer.classList.remove('hidden');
 
-   let e1 = document.querySelector('div#employee1Div');
-   let e2 = document.querySelector('div#employee2Div');
-   let e3 = document.querySelector('div#employee3Div');
-   let e4 = document.querySelector('div#employee4Div');
-   console.log(e1);
-   e1.classList.remove('hidden');
-
-   employeeArray.forEach(function(value, index) {
-      index = index+1;
-      let e = document.querySelector('div.employee'+(index)+'Div p')
-      if(e !=null) {
-         if(e.innerHTML != value.strength) {
-               e.innerHTML = value.strength;
+   employeeArray.forEach(function (value, index) {
+      index = index + 1;
+      let e = document.querySelector('div.employee' + (index) + 'Div p')
+      if (e != null) {
+         if (e.innerHTML != value.strength) {
+            e.innerHTML = value.strength;
          }
       }
 
-      let d = document.querySelector('div.employee'+(index)+'Doing')
-      if(d != null){
-         d.innerHTML = value.name;         
+      let d = document.querySelector('div.employee' + (index) + 'Doing')
+      if (d != null) {
+         d.innerHTML = value.strength;
       }
    })
 
@@ -795,122 +791,229 @@ function mounted() {
 // Function that responds to event of all tasks being completed. 
 
 function endMeeting() {
-var task1 = document.getElementById('doing1').firstElementChild.id;
-var task2 = document.getElementById('doing2').firstElementChild.id;
-var task3 = document.getElementById('doing3').firstElementChild.id;
-var task4 = document.getElementById('doing4').firstElementChild.id;
-
-// Figure out which tasks were working on. 
-taskArray.forEach(function(value, index) {
-   if(value.name === (task1)) {
-      currentTask1 = index;
-   } else if(value.name == task2) {
-      currentTask2 = index;
-   } else if (value.name == task3) {
-      currentTask3 = index;
-   } else if (value.name == task4) {
-      currentTask4 = index;
+   var task1, task2, task3, task4;
+   var elTask1 = document.getElementById('doing1')
+   if (elTask1.firstElementChild != null)
+      task1 = elTask1.firstElementChild.id;
+   var elTask2 = document.getElementById('doing2')
+   if (elTask2.firstElementChild != null) {
+      task2 = elTask2.firstElementChild.id;
    }
-})
+   var elTask3 = document.getElementById('doing3')
+   if (elTask3.firstElementChild != null) {
+      task3 = elTask3.firstElementChild.id;
+   }
+   var elTask4 = document.getElementById('doing4')
+   if (elTask4.firstElementChild != null) {
+      task4 = elTask4.firstElementChild.id;
+   }
 
-calculateActualTime(employeeArray[0].strength, taskArray[currentTask1]);
-calculateActualTime(employeeArray[1].strength, taskArray[currentTask2]);
-calculateActualTime(employeeArray[2].strength, taskArray[currentTask3]);
-calculateActualTime(employeeArray[3].strength, taskArray[currentTask4]);
+   // Figure out which tasks were working on. 
+   taskArray.forEach(function (value, index) {
+      if (value.name === (task1)) {
+         currentTask1 = index;
+      } else if (value.name == task2) {
+         currentTask2 = index;
+      } else if (value.name == task3) {
+         currentTask3 = index;
+      } else if (value.name == task4) {
+         currentTask4 = index;
+      }
+   })
 
-var endMeetingButton = document.getElementById('endMeetingButton');
-var callMeetingButton = document.getElementById('callMeetingButton');
-var fireStaffButton = document.getElementById('fireStaffButton');
+   if (currentTask1 != null) {
+      calculateActualTime(employeeArray[0].strength, taskArray[currentTask1]);
+   }
+   if (currentTask2 != null) {
+      calculateActualTime(employeeArray[1].strength, taskArray[currentTask2]);
+   }
+   if (currentTask3 != null) {
+      calculateActualTime(employeeArray[2].strength, taskArray[currentTask3]);
+   }
+   if (currentTask4 != null) {
+      calculateActualTime(employeeArray[3].strength, taskArray[currentTask4]);
+   }
 
-endMeetingButton.classList.add('disabled');
-fireStaffButton.classList.add('disabled');
-callMeetingButton.classList.remove('disabled');
+   var endMeetingButton = document.getElementById('endMeetingButton');
+   var callMeetingButton = document.getElementById('callMeetingButton');
+   var fireStaffButton = document.getElementById('fireStaffButton');
 
-endTime = 0;
+   endMeetingButton.classList.add('disabled');
+   fireStaffButton.classList.add('disabled');
+   callMeetingButton.classList.remove('disabled');
 
-beginLoop();
+   endTime = 0;
+
+   beginLoop();
 
 }
 
 function beginLoop() {
    startTime = Date.now();
+   timer = setInterval("updateProgress()", 10);
 }
 
 function callMeeting() {
-   endTime  = Date.now();
+   endTime = Date.now();
+   clearInterval(timer);
+   var todo = document.getElementById('todo');
+   if (currentTask1 != null) {
+      updateTaskPercentComplete(currentTask1, endTime);
+      var task1 = document.getElementById(taskArray[currentTask1].name);
+      todo.appendChild(task1);
+
+   }
+   if (currentTask2 != null) {
+      updateTaskPercentComplete(currentTask2, endTime);
+      var task2 = document.getElementById(taskArray[currentTask2].name);
+      todo.appendChild(task2);
+
+   }
+   if (currentTask3 != null) {
+      updateTaskPercentComplete(currentTask3, endTime);
+      var task3 = document.getElementById(taskArray[currentTask3].name);
+      todo.appendChild(task3);
+
+   }
+   if (currentTask4 != null) {
+      updateTaskPercentComplete(currentTask4, endTime);
+      var task4 = document.getElementById(taskArray[currentTask4].name);
+      todo.appendChild(task4);
+
+   }
+   currentTask1 = null;
+   currentTask2 = null;
+   currentTask3 = null;
+   currentTask4 = null;
+   
+   var endMeetingButton = document.getElementById('endMeetingButton');
+   var callMeetingButton = document.getElementById('callMeetingButton');
+   var fireStaffButton = document.getElementById('fireStaffButton');
+
+   endMeetingButton.classList.remove('disabled');
+   fireStaffButton.classList.remove('disabled');
+   callMeetingButton.classList.add('disabled');
+}
+
+function endGame() {
+   var game = document.getElementById('game');
+   var win = document.getElementById('win');
+   game.classList.add('hidden');
+   win.classList.remove('hidden');
+}
+
+function updateTaskPercentComplete(task_id, endTime) {
+   if(taskArray[task_id].interruptable == true) {
+      taskArray[task_id].percentComplete += ((endTime - startTime) / 1000) / taskArray[task_id].actualTime;
+      taskArray[task_id].actualTime = taskArray[task_id].expectedTime;
+   } else if(taskArray[task_id].percentComplete < 1) {
+      taskArray[task_id].percentComplete = 0;
+      taskArray[task_id].actualTime = taskArray[task_id].expectedTime;
+      var el = document.querySelector('#' + taskArray[task_id].name + ' p')
+      el.innerHTML = "INTERRUPTED"
+   }
+}
+
+function updateProgress() {
+   if ((currentTask1 != null) && (taskArray[currentTask1].percentComplete + (((Date.now() - startTime) / 1000) / taskArray[currentTask1].actualTime) > 1)) {
+      finishTask(currentTask1);
+      currentTask1 = null;
+   }
+   if ((currentTask2 != null) && (taskArray[currentTask2].percentComplete + (((Date.now() - startTime) / 1000) / taskArray[currentTask2].actualTime) > 1)) {
+      finishTask(currentTask2);
+      currentTask2 = null;
+   }
+   if ((currentTask3 != null) && (taskArray[currentTask3].percentComplete + (((Date.now() - startTime) / 1000) / taskArray[currentTask3].actualTime) > 1)) {
+      finishTask(currentTask3);
+      currentTask3 = null;
+   }
+   if ((currentTask4 != null) && (taskArray[currentTask4].percentComplete + (((Date.now() - startTime) / 1000) / taskArray[currentTask4].actualTime) > 1)) {
+      finishTask(currentTask4);
+      currentTask4 = null;
+   }
+
+   if ((currentTask1 == null) && (currentTask2 == null) && (currentTask3 == null) && (currentTask4 == null)) {
+      if (completedTasks == 24) {
+         endGame();
+      } else {
+         console.log('call meeting');
+         callMeeting();
+      }
+   }
+
+   if (currentTask1 != null) {
+      var el = document.querySelector('#' + taskArray[currentTask1].name + ' p')
+      var value = ((taskArray[currentTask1].percentComplete + (((Date.now() - startTime) / 1000) / taskArray[currentTask1].actualTime)) * 100).toFixed(1)
+      el.innerHTML = value + " % / 100%"
+   }
+   if (currentTask2 != null) {
+      var el = document.querySelector('#' + taskArray[currentTask2].name + ' p')
+      var value = ((taskArray[currentTask2].percentComplete + (((Date.now() - startTime) / 1000) / taskArray[currentTask2].actualTime)) * 100).toFixed(1)
+      el.innerHTML = value + " % / 100%"
+   }
+   if (currentTask3 != null) {
+      var el = document.querySelector('#' + taskArray[currentTask3].name + ' p')
+      var value = ((taskArray[currentTask3].percentComplete + (((Date.now() - startTime) / 1000) / taskArray[currentTask3].actualTime)) * 100).toFixed(1)
+      el.innerHTML = value + " % / 100%"
+   }
+   if (currentTask4 != null) {
+      var el = document.querySelector('#' + taskArray[currentTask4].name + ' p')
+      var value = ((taskArray[currentTask4].percentComplete + (((Date.now() - startTime) / 1000) / taskArray[currentTask4].actualTime)) * 100).toFixed(1)
+      el.innerHTML = value + " % / 100%"
+   }
+
 }
 
 
+// Finish a task and show results
+// Description: Takes the task and sets its completed values so the task is completed and then it moves it into the DONE column with the COMPLETE innerhtml. 
+function finishTask(task_id) {
+   taskArray[task_id].percentComplete = 1;
+   taskArray[task_id].completed = true;
+   var task = document.getElementById(taskArray[task_id].name);
+   var taskComplete = document.querySelector('#' + taskArray[task_id].name + ' p');
+   var done = document.getElementById('done');
 
-
-function findTimeModifier(strength,  task) {
-   let modifier = 1;
-   if(task.terrible.find(element => element === strength))
-   {
-      modifier = 4;
-   } else if(task.semiterrible.find(element => element === strength))
-   {
-      modifier = 2;
-   } else if(task.neutral.find(element => element === strength))
-   {
-      modifier = 1;
-   } else if(task.good.find(element => element === strength))
-   {
-      modifier = 2;
-   } else if(task.verygood.find(element => element === strength))
-   {
-      modifier = 4;
-   } else {
-      modifier = 1;
-   }
-
-   return modifier;
-
+   taskComplete.innerHTML = "COMPLETE";
+   done.appendChild(task);
+   completedTasks++;
 }
 
 function calculateActualTime(strength, task) {
    let tempStrength;
    let category = 1;
-   task.terrible.forEach(  function(value) {
-      if(value == strength) {
-         category = -4;
+   task.terrible.forEach(function (value) {
+      if (value == strength) {
+         category = 0.25
       }
    });
-   task.semiterrible.forEach(  function(value) {
-      if(value == strength) {
-         category = -2;
+   task.semiterrible.forEach(function (value) {
+      if (value == strength) {
+         category = 0.5;
       }
    });
-   task.neutral.forEach(  function(value) {
-      if(value == strength) {
+   task.neutral.forEach(function (value) {
+      if (value == strength) {
          category = 1;
       }
    });
-   task.good.forEach(  function(value) {
-      if(value == strength) {
+   task.good.forEach(function (value) {
+      if (value == strength) {
          category = 2;
       }
    });
-   task.verygood.forEach(  function(value) {
-      if(value == strength) {
+   task.verygood.forEach(function (value) {
+      if (value == strength) {
          category = 4;
       }
    });
-
+   console.log("CHECK HERE");
+   console.log(task.percentComplete);
+   console.log(task.expectedTime);
+   console.log(category);
+   console.log(task.actualTime);
    // The actual time left will be the category times the difference between the expected time and the expected time * percent complete. 
-   task.actualTime = category*(task.expectedTime - task.percentComplete*task.expectedTime);
-}
-
-function additionalEffects() {
-   
-}
-
-function stopInProgress(task, elapsedTime) {
-   task.percentComplete += elapsedTime/task.actualTime;
-}
-
-function startWithEmployee(employee, task) {
-   
+   task.actualTime = category * (task.expectedTime - task.percentComplete * task.expectedTime);
 }
 
 function endTask(Task) {
@@ -924,7 +1027,8 @@ function endTask(Task) {
  * 
  */
 function drag(ev) {
-   if(endTime > 0) {
+   console.log(endTime);
+   if (endTime > 0) {
       ev.dataTransfer.setData("text", ev.target.id);
    }
 }
@@ -935,7 +1039,7 @@ function allowDrop(ev) {
 
 function drop(ev) {
    ev.preventDefault();
-   if(endTime > 0) {
+   if (endTime > 0) {
       var data = ev.dataTransfer.getData("text");
       ev.target.appendChild(document.getElementById(data));
 
@@ -945,12 +1049,12 @@ function drop(ev) {
 function dropDoing(ev) {
    ev.preventDefault();
    var data = ev.dataTransfer.getData("text");
-   if((ev.target.childNodes.length == 1) && (endTime > 0 ) && ((ev.target.id.match('doing1')) || (ev.target.id.match('doing2')) || (ev.target.id.match('doing3')) || (ev.target.id.match('doing4'))))
+   if ((ev.target.childNodes.length == 1) && (endTime > 0) && ((ev.target.id.match('doing1')) || (ev.target.id.match('doing2')) || (ev.target.id.match('doing3')) || (ev.target.id.match('doing4'))))
       ev.target.appendChild(document.getElementById(data));
 }
 
 function allowDropDoing(ev) {
-   if((ev.target.childNodes.length <= 1)) {
+   if ((ev.target.childNodes.length <= 1)) {
       ev.preventDefault();
    }
 }
