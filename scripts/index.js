@@ -984,12 +984,12 @@ function calculateActualTime(strength, task) {
    let category = 1;
    task.terrible.forEach(function (value) {
       if (value == strength) {
-         category = 0.25
+         category = 4
       }
    });
    task.semiterrible.forEach(function (value) {
       if (value == strength) {
-         category = 0.5;
+         category = 2;
       }
    });
    task.neutral.forEach(function (value) {
@@ -999,19 +999,14 @@ function calculateActualTime(strength, task) {
    });
    task.good.forEach(function (value) {
       if (value == strength) {
-         category = 2;
+         category = 0.5;
       }
    });
    task.verygood.forEach(function (value) {
       if (value == strength) {
-         category = 4;
+         category = 0.25;
       }
    });
-   console.log("CHECK HERE");
-   console.log(task.percentComplete);
-   console.log(task.expectedTime);
-   console.log(category);
-   console.log(task.actualTime);
    // The actual time left will be the category times the difference between the expected time and the expected time * percent complete. 
    task.actualTime = category * (task.expectedTime - task.percentComplete * task.expectedTime);
 }
