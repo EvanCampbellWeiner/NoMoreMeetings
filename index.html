@@ -19,9 +19,18 @@
    </section>
    <!-- Start Screen -->
    <section id="start" class="middle">
-      <div>
          <div class="title">
             <h2>Choose your Perfect Team</h2>
+         </div>
+         <div class="instructions">
+            <p>
+               Hello Manager-Wannabe. You think you got what it takes to be the next CEO of Twitter? Well then prove it. In NoMoreMeetings,
+               you are going to assemble a team of workers to attempt to try to accomplish 24 different tasks. The goal: to finish all of the tasks
+               as fast as possible by assigning tasks to your team. Be forewarned, depending on the strength you choose, the tasks may take longer and shorter. 
+               In addition, the only way to call a meeting is to have a meeting with everyone! That means some tasks might lose all their progress! 
+               Good luck and good managing. 
+
+            </p>
          </div>
          <div class="bottomDiv">
             <div class="employee">
@@ -142,8 +151,6 @@
             </div>
             <button id="startButton" class="bottomDivButton" onclick="mounted()">Start Game</button>
          </div>
-
-      </div>
    </section>
    <!-- Playing the Game Screen -->
    <section id="game" class="middle hidden">
@@ -153,7 +160,7 @@
          <h2 class="gameH2"> Done</h2>
       </div>
       <div class="notes">
-         <div class="todo" ondrop="drop(event)" ondragover="allowDrop(event)">
+         <div id="todo" class="todo" ondrop="drop(event)" ondragover="allowDrop(event)">
             <div id="businesscard" class="task" draggable="true" ondragstart="drag(event)">
                   <div class="stickynote">
                      <i class="fas fa-id-card"></i>
@@ -357,39 +364,24 @@
             <div id="doing4" class="employee4Doing" ondrop="dropDoing(event)" ondragover="allowDropDoing(event)">
             </div>
          </div>
-         <div class="done">
+         <div id ="done" class="done">
 
          </div>
       </div>
 
    </section>
+   <!-- Game End Screen -->
+   <section id="win" class="middle hidden">
+      <div class="winDiv">
+         <h1 class="winH1">YOU WIN!!!!!</h1>
+         <p class="winP">You managed to finish all of the tasks in time and have successfully been promoted!</p>
+      </div>
+
+
+   </section>
    <section id="footer" class="bottom hidden">
       <div class="bottomDiv">
-         <div id="employee1Div" class="employee">
-            <i draggable="true" class="fas fa-user"></i>
-            <p class="hidden">Useless</p>
-         </div>
-         <div id="employee2Div" class="employee">
-            <div class="flex-row">
-               <i class="fas fa-mug-hot"></i>
-               <i class="fas fa-user"></i>
-            </div>
-            <p class="hidden">Useless</p>
-         </div>
-         <div id="employee3Div" class="employee">
-            <div class="flex-row">
-               <i class="fas fa-battery-quarter"></i>
-               <i class="fas fa-user"></i>
-            </div>
-            <p class="hidden">Useless</p>
-         </div>
-         <div id="employee4Div" class="employee">
-            <i class="fas fa-user"></i>
-            <p class="hidden">Useless</p>
-         </div>
-      </div>
-      <div class="bottomDiv">
-         <button id="callMeetingButton" onclick="callMeeting()" class="bottomDivButton disabled callMeeting" disabled>Call
+         <button id="callMeetingButton" onclick="callMeeting()" class="bottomDivButton disabled callMeeting">Call
             Meeting</button>
          <button id="endMeetingButton" class="bottomDivButton endMeeting" onclick="endMeeting()">End Meeting</button>
          <button id="fireStaffButton" class="bottomDivButton fireStaff" onclick="changeStaff()">Fire Staff</button>
