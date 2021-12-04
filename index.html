@@ -1,163 +1,403 @@
 <!doctype html>
 <html>
-  <head>
-      <link rel="stylesheet" href="styles/reset.css">
-      <link rel="stylesheet" href="styles/base.css">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-  </head>
-  <body>
+
+<head>
+   <link rel="stylesheet" href="styles/reset.css">
+   <link rel="stylesheet" href="styles/base.css">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+</head>
+
+<body>
    <section class="top">
       <div class="title">
          <h2>No More Meetings</h2>
       </div>
    </section>
-   <section class="middle">
-      <div class="board">
-         <div id="businesscard" class="task">
-            <h3 class="name">Create a Business Card</h3>
-            <p></p>
-                
+   <!-- Start Screen -->
+   <section id="start" class="middle">
+      <div>
+         <div class="title">
+            <h2>Choose your Perfect Team</h2>
          </div>
-         <div id="proposal" class="task">
-            <h3 class="name">Create a Project Proposal</h3>
-            <p></p>
-                
+         <div class="bottomDiv">
+            <div class="employee">
+               <i class="fas fa-user"></i>
+               <select id="employee1Select" class="employeeSelect">
+                  <option value="Authenticity">Authenticity</option>
+                  <option value="Beauty">Appreciation of Beauty</option>
+                  <option value="Bravery">Bravery</option>
+                  <option value="Creativity">Creativity</option>
+                  <option value="Curiousity">Curiousity</option>
+                  <option value="Fairness">Fairness</option>
+                  <option value="Forgiveness">Forgiveness</option>
+                  <option value="Gratitude">Gratitude</option>
+                  <option value="Hope">Hope</option>
+                  <option value="Humour">Humour</option>
+                  <option value="Kindness">Kindness</option>
+                  <option value="Leadership">Leadership</option>
+                  <option value="Love">Love</option>
+                  <option value="Learning">Love of Learning</option>
+                  <option value="Modesty">Modesty / Humility</option>
+                  <option value="Persistence">Persistence</option>
+                  <option value="Perspective">Perspective</option>
+                  <option value="Prudence">Prudence</option>
+                  <option value="open">Open-mindedness</option>
+                  <option value="Religiousness">Religiousness</option>
+                  <option value="Bravery">Bravery</option>
+                  <option value="Self">Self-Regulation</option>
+                  <option value="Social Intelligence">Social Intelligence</option>
+                  <option value="Zest">Zest</option>
+               </select>
+            </div>
+            <div class="employee">
+               <i class="fas fa-user"></i>
+               <select id="employee2Select" class="employeeSelect">
+                  <option value="Authenticity">Authenticity</option>
+                  <option value="Beauty">Appreciation of Beauty</option>
+                  <option value="Bravery">Bravery</option>
+                  <option value="Creativity">Creativity</option>
+                  <option value="Curiousity">Curiousity</option>
+                  <option value="Fairness">Fairness</option>
+                  <option value="Forgiveness">Forgiveness</option>
+                  <option value="Gratitude">Gratitude</option>
+                  <option value="Hope">Hope</option>
+                  <option value="Humour">Humour</option>
+                  <option value="Kindness">Kindness</option>
+                  <option value="Leadership">Leadership</option>
+                  <option value="Love">Love</option>
+                  <option value="Learning">Love of Learning</option>
+                  <option value="Modesty">Modesty / Humility</option>
+                  <option value="Persistence">Persistence</option>
+                  <option value="Perspective">Perspective</option>
+                  <option value="Prudence">Prudence</option>
+                  <option value="open">Open-mindedness</option>
+                  <option value="Religiousness">Religiousness</option>
+                  <option value="Bravery">Bravery</option>
+                  <option value="Self">Self-Regulation</option>
+                  <option value="Social Intelligence">Social Intelligence</option>
+                  <option value="Zest">Zest</option>
+               </select>
+            </div>
+            <div class="employee">
+               <i class="fas fa-user"></i>
+               <select id="employee3Select" class="employeeSelect">
+                  <option value="Authenticity">Authenticity</option>
+                  <option value="Beauty">Appreciation of Beauty</option>
+                  <option value="Bravery">Bravery</option>
+                  <option value="Creativity">Creativity</option>
+                  <option value="Curiousity">Curiousity</option>
+                  <option value="Fairness">Fairness</option>
+                  <option value="Forgiveness">Forgiveness</option>
+                  <option value="Gratitude">Gratitude</option>
+                  <option value="Hope">Hope</option>
+                  <option value="Humour">Humour</option>
+                  <option value="Kindness">Kindness</option>
+                  <option value="Leadership">Leadership</option>
+                  <option value="Love">Love</option>
+                  <option value="Learning">Love of Learning</option>
+                  <option value="Modesty">Modesty / Humility</option>
+                  <option value="Persistence">Persistence</option>
+                  <option value="Perspective">Perspective</option>
+                  <option value="Prudence">Prudence</option>
+                  <option value="open">Open-mindedness</option>
+                  <option value="Religiousness">Religiousness</option>
+                  <option value="Bravery">Bravery</option>
+                  <option value="Self">Self-Regulation</option>
+                  <option value="Social Intelligence">Social Intelligence</option>
+                  <option value="Zest">Zest</option>
+               </select>
+            </div>
+            <div class="employee">
+               <i class="fas fa-user"></i>
+               <select id="employee4Select" class="employeeSelect">
+                  <option value="Authenticity">Authenticity</option>
+                  <option value="Beauty">Appreciation of Beauty</option>
+                  <option value="Bravery">Bravery</option>
+                  <option value="Creativity">Creativity</option>
+                  <option value="Curiousity">Curiousity</option>
+                  <option value="Fairness">Fairness</option>
+                  <option value="Forgiveness">Forgiveness</option>
+                  <option value="Gratitude">Gratitude</option>
+                  <option value="Hope">Hope</option>
+                  <option value="Humour">Humour</option>
+                  <option value="Kindness">Kindness</option>
+                  <option value="Leadership">Leadership</option>
+                  <option value="Love">Love</option>
+                  <option value="Learning">Love of Learning</option>
+                  <option value="Modesty">Modesty / Humility</option>
+                  <option value="Persistence">Persistence</option>
+                  <option value="Perspective">Perspective</option>
+                  <option value="Prudence">Prudence</option>
+                  <option value="open">Open-mindedness</option>
+                  <option value="Religiousness">Religiousness</option>
+                  <option value="Bravery">Bravery</option>
+                  <option value="Self">Self-Regulation</option>
+                  <option value="Social Intelligence">Social Intelligence</option>
+                  <option value="Zest">Zest</option>
+               </select>
+            </div>
+            <button id="startButton" class="bottomDivButton" onclick="mounted()">Start Game</button>
          </div>
-         <div id="study" class="task">
-            <h3 class="name">Study</h3>
-            <p></p>
-                
+
+      </div>
+   </section>
+   <!-- Playing the Game Screen -->
+   <section id="game" class="middle hidden">
+      <div class="headings">
+         <h2 class="gameH2"> Todo</h2>
+         <h2 class="gameH2"> Doing </h2>
+         <h2 class="gameH2"> Done</h2>
+      </div>
+      <div class="notes">
+         <div class="todo" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div id="businesscard" class="task" draggable="true" ondragstart="drag(event)">
+                  <div class="stickynote">
+                     <i class="fas fa-id-card"></i>
+                     <h3 class="name">Create a Business Card</h3>
+                  </div>
+               <p></p>
+
+            </div>
+            <div id="proposal" class="task" draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-chart-pie"></i>
+                  <h3 class="name">Create a Project Proposal</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="study" class="task" draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-pencil-alt"></i>
+                  <h3 class="name">Study</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="client" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="far fa-handshake"></i>
+                  <h3 class="name">Meet with Client</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="investor" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-hand-holding-usd"></i>
+                  <h3 class="name">Meet with Investor</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="customer" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-hand-holding-heart"></i>
+                  <h3 class="name">Gather Customer Details</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="trash" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-dumpster-fire"></i>
+                  <h3 class="name">Trash a Competitor's Office</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="product" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-hammer"></i>
+                  <h3 class="name">Actually Build the Product</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="socialMedia" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-mobile-alt"></i>
+                  <h3 class="name">Build a Social Media Presence</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="donationBin" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-hand-holding-heart"></i>
+                  <h3 class="name">Create a Donation Bin</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="fakeReviews" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-star-half-alt"></i>
+                  <h3 class="name">Make Up Fake Reviews</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="stakeholders" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-inbox"></i>
+                  <h3 class="name">Organize Partners</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="accessibility" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-wheelchair"></i>
+                  <h3 class="name">Implement Accessibility Guidelines</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="yell" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="far fa-tired"></i>
+                  <h3 class="name">Yell at Coworkers</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="support" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="far fa-smile-beam"></i>
+                  <h3 class="name">Support Coworkers</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="fix" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-tools"></i>
+                  <h3 class="name">Fix Coworkers Mistakes</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="report" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-table"></i>
+                  <h3 class="name">Report on Current Progress</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="evaluate" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-tasks"></i>
+                  <h3 class="name">Evaluate Progress</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="minesweeper" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-bomb"></i>
+                  <h3 class="name">Play Minesweeper</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="flowers" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-spa"></i>
+                  <h3 class="name">Bring Flowers to Stakeholders</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="thankyoucard" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-pen-fancy"></i>
+                  <h3 class="name">Write 1000 Thank You Cards</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="graph" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-chart-line"></i>
+                  <h3 class="name">Create an Overly Optimistic Graph</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="roast" class="task"  draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-pepper-hot"></i>
+                  <h3 class="name">Plan a Roast for the Boss</h3>
+               </div>
+               <p></p>
+
+            </div>
+            <div id="holidays" class="task" draggable="true" ondragstart="drag(event)">
+               <div class="stickynote">
+                  <i class="fas fa-glass-cheers"></i>
+                  <h3 class="name">Plan for the Holidays</h3>
+               </div>
+               <p></p>
+
+            </div>
          </div>
-         <div id="client" class="task">
-            <h3 class="name">Meet with Client</h3>
-            <p></p>
-                
+         <div class="doing">
+            <div id="doing1" class="employee1Doing"  ondrop="dropDoing(event)" ondragover="allowDropDoing(event)">
+            </div>
+            <div id="doing2" class="employee2Doing" ondrop="dropDoing(event)" ondragover="allowDropDoing(event)">
+            </div>
+            <div id="doing3" class="employee3Doing" ondrop="dropDoing(event)" ondragover="allowDropDoing(event)">
+            </div>
+            <div id="doing4" class="employee4Doing" ondrop="dropDoing(event)" ondragover="allowDropDoing(event)">
+            </div>
          </div>
-         <div id="investor" class="task">
-            <h3 class="name">Meet with Investor</h3>
-            <p></p>
-                
-         </div>
-         <div id="customer" class="task">
-            <h3 class="name">Gather Customer Details</h3>
-            <p></p>
-                
-         </div>
-         <div id="trash" class="task">
-            <h3 class="name">Trash a Competitor's Office</h3>
-            <p></p>
-                
-         </div>
-         <div id="product" class="task">
-            <h3 class="name">Actually Build the Product</h3>
-            <p></p>
-                
-         </div>
-         <div id="socialMedia" class="task">
-            <h3 class="name">Build a Social Media Presence</h3>
-            <p></p>
-                
-         </div>
-         <div id="donationBin" class="task">
-            <h3 class="name">Create a Donation Bin</h3>
-            <p></p>
-                
-         </div>
-         <div id="fakeReviews" class="task">
-            <h3 class="name">Make Up Fake Reviews on the Product</h3>
-            <p></p>
-                
-         </div>
-         <div id="stakeholders" class="task">
-            <h3 class="name">Organize All Stakeholders</h3>
-            <p></p>
-                
-         </div>
-         <div id="accessibility" class="task">
-            <h3 class="name">Implement Accessibility Guidelines</h3>
-            <p></p>
-                
-         </div>
-         <div id="yell" class="task">
-            <h3 class="name">Yell at Coworkers</h3>
-            <p></p>
-                
-         </div>
-         <div id="support" class="task">
-            <h3 class="name">Support Coworkers</h3>
-            <p></p>
-                
-         </div>
-         <div id="fix" class="task">
-            <h3 class="name">Fix Coworkers Mistakes</h3>
-            <p></p>
-                
-         </div>
-         <div id="report" class="task">
-            <h3 class="name">Write an Update Report</h3>
-            <p></p>
-                
-         </div>
-         <div id="evaluate" class="task">
-            <h3 class="name">Evaluate Progress</h3>
-            <p></p>
-                
-         </div>
-         <div id="minesweeper" class="task">
-            <h3 class="name">Play Minesweeper</h3>
-            <p></p>
-                
-         </div>
-         <div id="flowers" class="task">
-            <h3 class="name">Bring Flowers to Stakeholders</h3>
-            <p></p>
-                
-         </div>
-         <div id="thankyoucard" class="task complete">
-            <h3 class="name">Write 1000 Thank You Cards</h3>
-            <p></p>
-                
-         </div>
-         <div id="graph" class="task">
-            <h3 class="name">Create an Overly Optimistic Graph</h3>
-            <p></p>
-                
-         </div>
-         <div id="roast" class="task">
-            <h3 class="name">Plan a Roast on the Boss</h3>
-            <p></p>
-                
-         </div>
-         <div id="holidays" class="task">
-            <h3 class="name">Plan for the Holidays</h3>
-            <p></p>
-                
+         <div class="done">
+
          </div>
       </div>
-   </section>     
-   <section class="bottom">
-      <div class="bottomDiv">
-         <div class="employee">
-           <i class="fas fa-user"></i>
-         </div>
-         <div class="employee">
-           <i class="fas fa-user"></i>
-         </div>
-         <div class="employee">
-           <i class="fas fa-user"></i>
-         </div>
-         <div class="employee">
-           <i class="fas fa-user"></i>
-         </div>
-     </div>
-     <div class="bottomDiv">
-         <button class="bottomDivButton">Call Meeting</button>
-         <button class="bottomDivButton" disabled>End Meeting</button>
-         <button class="bottomDivButton">Fire Staff</button>
-
-     </div>
 
    </section>
-   <script type="module" src="index.js"></script>
-  </body>
+   <section id="footer" class="bottom hidden">
+      <div class="bottomDiv">
+         <div id="employee1Div" class="employee">
+            <i draggable="true" class="fas fa-user"></i>
+            <p class="hidden">Useless</p>
+         </div>
+         <div id="employee2Div" class="employee">
+            <div class="flex-row">
+               <i class="fas fa-mug-hot"></i>
+               <i class="fas fa-user"></i>
+            </div>
+            <p class="hidden">Useless</p>
+         </div>
+         <div id="employee3Div" class="employee">
+            <div class="flex-row">
+               <i class="fas fa-battery-quarter"></i>
+               <i class="fas fa-user"></i>
+            </div>
+            <p class="hidden">Useless</p>
+         </div>
+         <div id="employee4Div" class="employee">
+            <i class="fas fa-user"></i>
+            <p class="hidden">Useless</p>
+         </div>
+      </div>
+      <div class="bottomDiv">
+         <button id="callMeetingButton" onclick="callMeeting()" class="bottomDivButton disabled callMeeting" disabled>Call
+            Meeting</button>
+         <button id="endMeetingButton" class="bottomDivButton endMeeting" onclick="endMeeting()">End Meeting</button>
+         <button id="fireStaffButton" class="bottomDivButton fireStaff" onclick="changeStaff()">Fire Staff</button>
+
+      </div>
+
+   </section>
+   <script src="./scripts/index.js"></script>
+</body>
+
 </html>

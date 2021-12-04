@@ -5,11 +5,12 @@ canvas {
 
 body {
    background-color:black;
-   font-family:Verdana, Geneva, Tahoma, sans-serif;
+   font-family: 'Architects Daughter', cursive;
 }
  
 h2 {
    font: 36px solid white;
+   font-family: 'Architects Daughter', cursive;
    color:white;
 }
 
@@ -28,14 +29,58 @@ h2 {
    height:80px;
 }
 
+#game {
+   background-color:white;
+}
+
 .middle {
    display:flex;
    justify-content: space-around;
-   flex-direction: row;
+   flex-direction: column;
+   padding-bottom:10px;
 }
 
-.board {
-   width: 1280px;
+.notes {
+   display:flex;
+   flex-direction:row;
+   align-items:space-evenly;
+   justify-content:space-evenly;
+}
+.headings {
+   display:flex;
+   flex-direction:row;
+   align-items:center;
+   justify-content:space-evenly;
+}
+
+.gameH2 {
+   font-size: 4em;
+   color:black;
+}
+
+.todo {
+   width: 600px;
+   display:flex;
+   justify-content: space-evenly;
+   align-items: center;
+   flex-direction: row;
+   flex-wrap: wrap;
+}
+
+.doing {
+   width: 480px;
+   display:flex;
+   justify-content: space-evenly;
+   align-items: center;
+   flex-direction: row;
+   flex-wrap: wrap;
+   border-right: 3px solid black;
+   border-left: 3px solid black;
+
+}
+
+.done {
+   width: 600px;
    display:flex;
    justify-content: space-evenly;
    align-items: center;
@@ -44,26 +89,25 @@ h2 {
 }
 
 .task {
-   border: 2px solid rgb(182, 142, 9);
-   border-radius: 10%;
-   width: 140px;
-   height: 120px;
-   background-color: steelblue;
+   border: 2px solid rgb(245, 195, 30);
+   border-radius: 0% 10% 0% 10%;
+   box-shadow: 8px 8px rgb(182, 142, 9);
+   width: 120px;
+   height: 80px;
+   background-color: rgb(245, 195, 30);
    margin: 8px 2px;
-   font: 16px solid white;
-   font-weight:bold;
+   font: 16px solid black;
+   font-family: 'Architects Daughter';
+   font-weight: bold;
    display:flex;
    flex-direction: column;
    justify-content:space-around;
    align-items:center;
-   color:white;
+   color:black;
 }
 
 .task:hover {
    border: 2px solid rgb(0, 0, 0);
-   border-radius: 10%;
-   width: 140px;
-   height: 120px;
    background-color:gray;
    margin: 8px 2px;
    display:flex;
@@ -75,11 +119,11 @@ h2 {
 
 .name {
    margin:5px;
-   color:white;
+   color:black;
 }
 
 .complete {
-   background-color:green;
+   margin:1px;
 }
 
 .complete:hover {
@@ -149,3 +193,54 @@ h2 {
    font-size:32px;
 }
 
+
+.hidden {
+   display:none;
+}
+
+select {
+   max-width:5em;
+}
+
+.callMeeting {
+   background-color: green;
+}
+
+.endMeeting {
+   background-color: green;
+}
+
+.fireStaff {
+   background-color:red;
+}
+
+.disabled {
+   background-color: grey;
+}
+
+
+.flex-row {
+   display:flex;
+   flex-direction:row;
+   justify-content:space-around;
+   align-items:center;
+}
+
+.stickynote {
+   padding: 5px;
+   display:flex;
+   flex-direction:row;
+   justify-content:space-around;
+   align-items:center;
+
+}
+
+.stickynote > i {
+  font-size:1.4em;
+}
+
+.doing > div {
+   width: 300px;
+   height:100px;
+   border-bottom: 1px solid black;
+}
