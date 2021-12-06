@@ -13,7 +13,7 @@
 
 <body>
    <section class="top">
-      <div class="title">
+      <div class="title topTitle">
          <h2>No More Meetings</h2>
          <h2 id="timer"></h2>
       </div>
@@ -360,17 +360,30 @@
             </div>
          </div>
          <div class="doing">
-            <div id="doing1" class="employee1Doing" ondrop="dropDoing(event)" ondragover="allowDropDoing(event)">
-               <div class="employeeDetails employee1DoingStrength"></div>
+            <div id="doing1" class="employee1Doing employeeDoing" ondrop="dropDoing(event)" ondragover="allowDropDoing(event)">
+               <div class="employeeBio">
+                  <img src="images/employee1.png" alt="employee1" class="doingImage" />
+                  <div class="employeeDetails employee1DoingStrength"></div>
+               </div>
             </div>
-            <div id="doing2" class="employee2Doing" ondrop="dropDoing(event)" ondragover="allowDropDoing(event)">
-               <div class="employeeDetails employee2DoingStrength"></div>
+            <div id="doing2" class="employee2Doing employeeDoing" ondrop="dropDoing(event)" ondragover="allowDropDoing(event)">
+               <div class="employeeBio">
+                  <img src="images/employee2.png" alt="employee2" class="doingImage" />
+                  <div class="employeeDetails employee2DoingStrength"></div>
+               </div>
             </div>
-            <div id="doing3" class="employee3Doing" ondrop="dropDoing(event)" ondragover="allowDropDoing(event)">
-               <div class="employeeDetails employee3DoingStrength"></div>
+            <div id="doing3" class="employee3Doing employeeDoing" ondrop="dropDoing(event)" ondragover="allowDropDoing(event)">
+               <div class="employeeBio">
+                  <img src="images/employee3.png" alt="employee3" class="doingImage" />
+                  <div class="employeeDetails employee3DoingStrength"></div>
+               </div>
             </div>
-            <div id="doing4" class="employee4Doing" ondrop="dropDoing(event)" ondragover="allowDropDoing(event)">
-               <div class="employeeDetails employee4DoingStrength"></div>
+            <div id="doing4" class="employee4Doing employeeDoing" ondrop="dropDoing(event)" ondragover="allowDropDoing(event)">
+               <div class="employeeBio" >
+                  <img src="images/employee4.png" alt="employee4" class="doingImage" />
+                  <div class="employeeDetails employee4DoingStrength"></div>
+
+               </div>
             </div>
          </div>
          <div id="done" class="done">
@@ -399,43 +412,43 @@
    </section>
    <!-- Footer -->
    <section id="footer" class="bottom hidden">
-      <div id="bottomDivFooter" class="bottomDiv" ondrop="dropFooter(event)" ondragover="allowDropFooter(event)">
+      <div id="footerControls" class="footerControls" ondrop="dropFooter(event)" ondragover="allowDropFooter(event)">
          <button id="callMeetingButton" onclick="callMeeting()" class="bottomDivButton disabled callMeeting">Call
             Meeting</button>
          <button id="endMeetingButton" class="bottomDivButton endMeeting" onclick="endMeeting()">End Meeting</button>
-            <div id="training" class="task" draggable="true" ondragstart="dragTraining(event)">
-               <h3 class="name">Send Employee to Training</h3>
-               <div class="stickynote">
-                  <select id="trainingSelect" class="employeeSelect">
-                     <option value="Authenticity">Authenticity</option>
-                     <option value="Beauty">Appreciation of Beauty</option>
-                     <option value="Bravery">Bravery</option>
-                     <option value="Creativity">Creativity</option>
-                     <option value="Curiosity">Curiosity</option>
-                     <option value="Fairness">Fairness</option>
-                     <option value="Forgiveness">Forgiveness</option>
-                     <option value="Gratitude">Gratitude</option>
-                     <option value="Hope">Hope</option>
-                     <option value="Humour">Humour</option>
-                     <option value="Kindness">Kindness</option>
-                     <option value="Leadership">Leadership</option>
-                     <option value="Love">Love</option>
-                     <option value="Learning">Love of Learning</option>
-                     <option value="Modesty">Modesty / Humility</option>
-                     <option value="Persistence">Persistence</option>
-                     <option value="Perspective">Perspective</option>
-                     <option value="Prudence">Prudence</option>
-                     <option value="open">Open-mindedness</option>
-                     <option value="Religiousness">Religiousness</option>
-                     <option value="Bravery">Bravery</option>
-                     <option value="Self">Self-Regulation</option>
-                     <option value="Social Intelligence">Social Intelligence</option>
-                     <option value="Zest">Zest</option>
-                  </select>
-               </div>
-               <p></p>
-
+         <div id="training" class="task" draggable="true" ondragstart="dragTraining(event)">
+            <h3 class="name">Send Employee to Training</h3>
+            <div class="stickynote">
+               <select id="trainingSelect" class="employeeSelect">
+                  <option value="Authenticity">Authenticity</option>
+                  <option value="Beauty">Appreciation of Beauty</option>
+                  <option value="Bravery">Bravery</option>
+                  <option value="Creativity">Creativity</option>
+                  <option value="Curiosity">Curiosity</option>
+                  <option value="Fairness">Fairness</option>
+                  <option value="Forgiveness">Forgiveness</option>
+                  <option value="Gratitude">Gratitude</option>
+                  <option value="Hope">Hope</option>
+                  <option value="Humour">Humour</option>
+                  <option value="Kindness">Kindness</option>
+                  <option value="Leadership">Leadership</option>
+                  <option value="Love">Love</option>
+                  <option value="Learning">Love of Learning</option>
+                  <option value="Modesty">Modesty / Humility</option>
+                  <option value="Persistence">Persistence</option>
+                  <option value="Perspective">Perspective</option>
+                  <option value="Prudence">Prudence</option>
+                  <option value="open">Open-mindedness</option>
+                  <option value="Religiousness">Religiousness</option>
+                  <option value="Bravery">Bravery</option>
+                  <option value="Self">Self-Regulation</option>
+                  <option value="Social Intelligence">Social Intelligence</option>
+                  <option value="Zest">Zest</option>
+               </select>
             </div>
+            <p></p>
+
+         </div>
       </div>
    </section>
    <section id="credits" class="bottom">

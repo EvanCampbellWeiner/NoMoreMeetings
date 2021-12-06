@@ -1017,10 +1017,10 @@ function finishTask(task_id, currentTask = 0) {
       taskArray[task_id].percentComplete = 1;
       taskArray[task_id].completed = true;
       var task = document.getElementById(taskArray[task_id].name);
-      var bottomDivFooter = document.getElementById('bottomDivFooter');
+      var footerControls = document.getElementById('footerControls');
       var trainingSelect = document.getElementById('trainingSelect');
       employeeArray[employee].strength = trainingSelect.value;
-      bottomDivFooter.appendChild(task);
+      footerControls.appendChild(task);
       updateEmployeeStrengths();
    } 
 
@@ -1101,19 +1101,21 @@ function drop(ev) {
 function dropDoing(ev) {
    ev.preventDefault();
    var data = ev.dataTransfer.getData("text");
+   console.log(ev.target.childNodes.length);
+   console.log(ev.target.id)
    if ((ev.target.childNodes.length == 3) && (endTime > 0) && ((ev.target.id.match('doing1')) || (ev.target.id.match('doing2')) || (ev.target.id.match('doing3')) || (ev.target.id.match('doing4'))))
       ev.target.appendChild(document.getElementById(data));
 }
 
 function allowDropDoing(ev) {
-   if ((ev.target.childNodes.length <= 3)) {
+   if ((ev.target.childNodes.length >= 1)) {
       ev.preventDefault();
    }
 }
 
 function allowDropFooter(ev) {
    var data = ev.dataTransfer.getData('text');
-   if ((ev.target.childNodes.length <= 3) || (data != 'training')) {
+   if ((ev.target.childNodes.length <= 2) || (data != 'training')) {
       ev.preventDefault();
    }
 }
@@ -1121,7 +1123,7 @@ function allowDropFooter(ev) {
 function dropFooter(ev) {
    ev.preventDefault();
    var data = ev.dataTransfer.getData("text");
-   if ((data == 'training') && (endTime > 0) && (ev.target.id.match('bottomDivFooter'))) {
+   if ((data == 'training') && (endTime > 0) && (ev.target.id.match('footerControls'))) {
       ev.target.appendChild(document.getElementById(data));
    }
 }
