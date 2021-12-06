@@ -90,7 +90,7 @@ const Tasks = [
    'holidays'
 ];
 
-var taskArray = new Array(24);
+var taskArray = new Array(25);
 var employeeArray = new Array(4);
 var currentTask1;
 var currentTask2;
@@ -99,6 +99,9 @@ var currentTask4;
 var startTime;
 var endTime;
 var timer;
+var totalTimer;
+var startOfTimer = 0;
+var totalTime;
 var completedTasks = 0;
 var taskTime = 12;
 
@@ -211,29 +214,29 @@ function initializeTasks() {
 
    taskArray[4] = new Task('investor', taskTime, 0, false, false);
    taskArray[4].verygood[0] = 'Perspective';
-   taskArray[4].good[0] = 'BLAH';
-   taskArray[4].good[1] = 'BLAH';
-   taskArray[4].good[2] = 'BLAH';
-   taskArray[4].good[3] = 'BLAH';
-   taskArray[4].good[4] = 'BLAH';
-   taskArray[4].neutral[0] = 'BLAH';
-   taskArray[4].neutral[1] = 'BLAH';
-   taskArray[4].neutral[2] = 'BLAH';
-   taskArray[4].neutral[3] = 'BLAH';
-   taskArray[4].neutral[4] = 'BLAH';
-   taskArray[4].neutral[5] = 'BLAH';
-   taskArray[4].neutral[6] = 'BLAH';
-   taskArray[4].neutral[7] = 'BLAH';
-   taskArray[4].semiterrible[0] = 'BLAH';
-   taskArray[4].semiterrible[1] = 'BLAH';
-   taskArray[4].semiterrible[2] = 'BLAH';
-   taskArray[4].semiterrible[3] = 'BLAH';
-   taskArray[4].semiterrible[4] = 'BLAH';
-   taskArray[4].terrible[0] = 'BLAH';
-   taskArray[4].terrible[1] = 'BLAH';
-   taskArray[4].terrible[2] = 'BLAH';
-   taskArray[4].terrible[3] = 'BLAH';
-   taskArray[4].terrible[4] = 'BLAH';
+   taskArray[4].good[0] = 'Curiousity';
+   taskArray[4].good[1] = 'Open';
+   taskArray[4].good[2] = 'Kindness';
+   taskArray[4].good[3] = 'Social';
+   taskArray[4].good[4] = 'Gratitude';
+   taskArray[4].neutral[0] = 'Humour';
+   taskArray[4].neutral[1] = 'Bravery';
+   taskArray[4].neutral[2] = 'Persistence';
+   taskArray[4].neutral[3] = 'Love';
+   taskArray[4].neutral[4] = 'Leadership';
+   taskArray[4].neutral[5] = 'Teamwork';
+   taskArray[4].neutral[6] = 'Self';
+   taskArray[4].neutral[7] = 'Hope';
+   taskArray[4].semiterrible[0] = 'Authenticity';
+   taskArray[4].semiterrible[1] = 'Zest';
+   taskArray[4].semiterrible[2] = 'Forgiveness';
+   taskArray[4].semiterrible[3] = 'Beauty';
+   taskArray[4].semiterrible[4] = 'Religiousness';
+   taskArray[4].terrible[0] = 'Creativity';
+   taskArray[4].terrible[1] = 'Fairness';
+   taskArray[4].terrible[2] = 'Modesty';
+   taskArray[4].terrible[3] = 'Prudence';
+   taskArray[4].terrible[4] = 'Learning';
 
    taskArray[5] = new Task('customer', taskTime, 0, false, false);
    taskArray[5].verygood[0] = 'Authenticity';
@@ -547,7 +550,7 @@ function initializeTasks() {
    taskArray[16].terrible[3] = 'Zest';
    taskArray[16].terrible[4] = 'Religiousness';
 
-   taskArray[17] = new Task('evaluate', taskTime, 0, false, false);
+   taskArray[17] = new Task('evaluate', taskTime, 0, true, false);
    taskArray[17].verygood[0] = 'Prudence';
    taskArray[17].good[0] = 'Learning';
    taskArray[17].good[1] = 'Perspective';
@@ -729,8 +732,30 @@ function initializeTasks() {
    taskArray[23].terrible[3] = 'Persistence';
    taskArray[23].terrible[4] = 'Humour';
 
-   console.log(taskArray);
-   console.log("Hello");
+   taskArray[24] = new Task('training', taskTime, 0, false, false);
+   taskArray[24].verygood[0] = 'Self';
+   taskArray[24].verygood[1] = 'Learning';
+   taskArray[24].verygood[2] = 'Humour';
+   taskArray[24].good[0] = 'Curiousity';
+   taskArray[24].good[1] = 'Perspective';
+   taskArray[24].good[2] = 'Social';
+   taskArray[24].good[3] = 'Open';
+   taskArray[24].good[4] = 'Hope';
+   taskArray[24].good[5] = 'Prudence';
+   taskArray[24].good[6] = 'Authenticity';
+   taskArray[24].good[7] = 'Persistence';
+   taskArray[24].neutral[0] = 'Kindness';
+   taskArray[24].neutral[1] = 'Love';
+   taskArray[24].neutral[2] = 'Fairness';
+   taskArray[24].neutral[3] = 'Leadership';
+   taskArray[24].neutral[4] = 'Teamwork';
+   taskArray[24].semiterrible[0] = 'Beauty';
+   taskArray[24].semiterrible[1] = 'Gratitude';
+   taskArray[24].semiterrible[2] = 'Zest';
+   taskArray[24].semiterrible[3] = 'Forgiveness';
+   taskArray[24].semiterrible[4] = 'Modesty';
+   taskArray[24].terrible[0] = 'Creativity';
+   taskArray[24].terrible[1] = 'Bravery';
 
 }
 
@@ -743,23 +768,21 @@ function switchToMainGame() {
    game.classList.remove('hidden');
    footer.classList.remove('hidden');
 
-   employeeArray.forEach(function (value, index) {
-      index = index + 1;
-      let e = document.querySelector('div.employee' + (index) + 'Div p')
-      if (e != null) {
-         if (e.innerHTML != value.strength) {
-            e.innerHTML = value.strength;
-         }
-      }
+   updateEmployeeStrengths();
 
-      let d = document.querySelector('div.employee' + (index) + 'Doing')
-      if (d != null) {
+}
+
+function updateEmployeeStrengths() {
+   // Update Doing Column with Attribute
+   var tempIndex;
+   employeeArray.forEach(function (value, index) {
+      tempIndex  = index + 1;
+      let d = document.querySelector('div.employee' + (tempIndex) + 'DoingStrength')
+      if ((d != null) && (d.innerHTML != value.strength)) {
          d.innerHTML = value.strength;
       }
-   })
 
-
-
+})
 }
 
 function mounted() {
@@ -778,34 +801,22 @@ function mounted() {
 
 }
 
-// Function that responds to event of player choosing a task for a player
-
-// Function that responds to event of player " coaching a player" 
-
-// Function that responds to event of player ending a meeting
-
-// Loop function that is called by previous function until interrupted.
-
-// Function that responds to event of player calling a meeting
-
-// Function that responds to event of all tasks being completed. 
-
 function endMeeting() {
    var task1, task2, task3, task4;
    var elTask1 = document.getElementById('doing1')
-   if (elTask1.firstElementChild != null)
-      task1 = elTask1.firstElementChild.id;
+   if (elTask1.lastElementChild != null)
+      task1 = elTask1.lastElementChild.id;
    var elTask2 = document.getElementById('doing2')
-   if (elTask2.firstElementChild != null) {
-      task2 = elTask2.firstElementChild.id;
+   if (elTask2.lastElementChild != null) {
+      task2 = elTask2.lastElementChild.id;
    }
    var elTask3 = document.getElementById('doing3')
-   if (elTask3.firstElementChild != null) {
-      task3 = elTask3.firstElementChild.id;
+   if (elTask3.lastElementChild != null) {
+      task3 = elTask3.lastElementChild.id;
    }
    var elTask4 = document.getElementById('doing4')
-   if (elTask4.firstElementChild != null) {
-      task4 = elTask4.firstElementChild.id;
+   if (elTask4.lastElementChild != null) {
+      task4 = elTask4.lastElementChild.id;
    }
 
    // Figure out which tasks were working on. 
@@ -836,16 +847,27 @@ function endMeeting() {
 
    var endMeetingButton = document.getElementById('endMeetingButton');
    var callMeetingButton = document.getElementById('callMeetingButton');
-   var fireStaffButton = document.getElementById('fireStaffButton');
 
    endMeetingButton.classList.add('disabled');
-   fireStaffButton.classList.add('disabled');
    callMeetingButton.classList.remove('disabled');
 
    endTime = 0;
+   
+   if(startOfTimer == 0) {
+      setInterval('updateTimer()', 100);
+   }
 
    beginLoop();
 
+}
+
+function updateTimer() {
+   if(startOfTimer == 0 ) {
+      startOfTimer = Date.now();
+   } else {
+      var timer = document.getElementById('timer');
+      timer.textContent = Math.floor((Date.now() - startOfTimer) / 1000).toString();
+   }
 }
 
 function beginLoop() {
@@ -857,30 +879,31 @@ function callMeeting() {
    endTime = Date.now();
    clearInterval(timer);
    var todo = document.getElementById('todo');
-   if (currentTask1 != null) {
+   if ((currentTask1 != null) && (currentTask1 != 24)) {
       updateTaskPercentComplete(currentTask1, endTime);
       var task1 = document.getElementById(taskArray[currentTask1].name);
       todo.appendChild(task1);
 
-   }
-   if (currentTask2 != null) {
+   } 
+   if  ((currentTask2 != null) && (currentTask2 != 24)) {
       updateTaskPercentComplete(currentTask2, endTime);
       var task2 = document.getElementById(taskArray[currentTask2].name);
       todo.appendChild(task2);
 
    }
-   if (currentTask3 != null) {
+   if  ((currentTask3 != null) && (currentTask3 != 24)) {
       updateTaskPercentComplete(currentTask3, endTime);
       var task3 = document.getElementById(taskArray[currentTask3].name);
       todo.appendChild(task3);
-
-   }
-   if (currentTask4 != null) {
+   } 
+   if  ((currentTask4 != null) && (currentTask4 != 24)) {
       updateTaskPercentComplete(currentTask4, endTime);
       var task4 = document.getElementById(taskArray[currentTask4].name);
       todo.appendChild(task4);
 
-   }
+   } 
+
+   taskArray[24].percentComplete = 0;
    currentTask1 = null;
    currentTask2 = null;
    currentTask3 = null;
@@ -888,18 +911,26 @@ function callMeeting() {
    
    var endMeetingButton = document.getElementById('endMeetingButton');
    var callMeetingButton = document.getElementById('callMeetingButton');
-   var fireStaffButton = document.getElementById('fireStaffButton');
 
    endMeetingButton.classList.remove('disabled');
-   fireStaffButton.classList.remove('disabled');
    callMeetingButton.classList.add('disabled');
 }
 
 function endGame() {
-   var game = document.getElementById('game');
-   var win = document.getElementById('win');
-   game.classList.add('hidden');
-   win.classList.remove('hidden');
+   totalTimer = Math.floor(((Date.now() - startOfTimer) / 1000))
+
+   if(totalTimer < 360) {
+      var game = document.getElementById('game');
+      var win = document.getElementById('win');
+      game.classList.add('hidden');
+      win.classList.remove('hidden');
+   } else {
+      var game = document.getElementById('game');
+      var lost = document.getElementById('lost');
+      game.classList.add('hidden');
+      lost.classList.remove('hidden');
+   }
+
 }
 
 function updateTaskPercentComplete(task_id, endTime) {
@@ -916,19 +947,19 @@ function updateTaskPercentComplete(task_id, endTime) {
 
 function updateProgress() {
    if ((currentTask1 != null) && (taskArray[currentTask1].percentComplete + (((Date.now() - startTime) / 1000) / taskArray[currentTask1].actualTime) > 1)) {
-      finishTask(currentTask1);
+      (currentTask1 == 24) ? finishTask(currentTask1, 1) : finishTask(currentTask1);
       currentTask1 = null;
    }
    if ((currentTask2 != null) && (taskArray[currentTask2].percentComplete + (((Date.now() - startTime) / 1000) / taskArray[currentTask2].actualTime) > 1)) {
-      finishTask(currentTask2);
+      (currentTask2 == 24) ? finishTask(currentTask2, 2) : finishTask(currentTask2);
       currentTask2 = null;
    }
    if ((currentTask3 != null) && (taskArray[currentTask3].percentComplete + (((Date.now() - startTime) / 1000) / taskArray[currentTask3].actualTime) > 1)) {
-      finishTask(currentTask3);
+      (currentTask3 == 24) ? finishTask(currentTask3, 3) : finishTask(currentTask3);
       currentTask3 = null;
    }
    if ((currentTask4 != null) && (taskArray[currentTask4].percentComplete + (((Date.now() - startTime) / 1000) / taskArray[currentTask4].actualTime) > 1)) {
-      finishTask(currentTask4);
+      (currentTask4 == 24) ? finishTask(currentTask4, 4) : finishTask(currentTask4);
       currentTask4 = null;
    }
 
@@ -936,7 +967,6 @@ function updateProgress() {
       if (completedTasks == 24) {
          endGame();
       } else {
-         console.log('call meeting');
          callMeeting();
       }
    }
@@ -967,16 +997,44 @@ function updateProgress() {
 
 // Finish a task and show results
 // Description: Takes the task and sets its completed values so the task is completed and then it moves it into the DONE column with the COMPLETE innerhtml. 
-function finishTask(task_id) {
-   taskArray[task_id].percentComplete = 1;
-   taskArray[task_id].completed = true;
-   var task = document.getElementById(taskArray[task_id].name);
-   var taskComplete = document.querySelector('#' + taskArray[task_id].name + ' p');
-   var done = document.getElementById('done');
+function finishTask(task_id, currentTask = 0) {
+   var employee;
+   if(currentTask > 0) {
+      if(currentTask == 1) {
+         employee = 0;
+      }
+      else if(currentTask == 2) {
+         employee = 1;
+      }
+      else if(currentTask == 3) {
+         employee = 2;
+      }
+      else if(currentTask == 4) {
+         employee = 3;
+      }
+   }
+   if(taskArray[task_id].name == 'training') {
+      taskArray[task_id].percentComplete = 1;
+      taskArray[task_id].completed = true;
+      var task = document.getElementById(taskArray[task_id].name);
+      var bottomDivFooter = document.getElementById('bottomDivFooter');
+      var trainingSelect = document.getElementById('trainingSelect');
+      employeeArray[employee].strength = trainingSelect.value;
+      bottomDivFooter.appendChild(task);
+      updateEmployeeStrengths();
+   } 
 
-   taskComplete.innerHTML = "COMPLETE";
-   done.appendChild(task);
-   completedTasks++;
+   else {
+      taskArray[task_id].percentComplete = 1;
+      taskArray[task_id].completed = true;
+      var task = document.getElementById(taskArray[task_id].name);
+      var taskComplete = document.querySelector('#' + taskArray[task_id].name + ' p');
+      var done = document.getElementById('done');
+   
+      taskComplete.innerHTML = "COMPLETE";
+      done.appendChild(task);
+         completedTasks++;
+   }
 }
 
 function calculateActualTime(strength, task) {
@@ -1011,34 +1069,14 @@ function calculateActualTime(strength, task) {
    task.actualTime = category * (task.expectedTime - task.percentComplete * task.expectedTime);
 }
 
-function endTask(Task) {
-   Task.completed = true;
-   Task.percentComplete = 1;
-}
-
-function fireStaff() {
-   var game = document.getElementById('game');
-   var fireEmployee = document.getElementById('fireEmployee');
-   var bottomDiv = document.getElementById('footer');
-   game.classList.add('hidden');
-   fireEmployee.classList.remove('hidden');
-   bottomDiv.classList.add('hidden');
-
-
-   employeeArray.forEach(function(value, index) {
-      var select = document.getElementById('fireEmployee'+index);
-      if(select!=null){
-         // select.value = value.strength;
-      }
-   })
-
-}
 
 
 /**
  * Drag and Drop Code
  * 
  */
+
+
 function drag(ev) {
    console.log(endTime);
    if (endTime > 0) {
@@ -1054,6 +1092,7 @@ function drop(ev) {
    ev.preventDefault();
    if (endTime > 0) {
       var data = ev.dataTransfer.getData("text");
+      if((data != 'training') && (ev.target.id.match('todo')) )
       ev.target.appendChild(document.getElementById(data));
 
    }
@@ -1062,12 +1101,33 @@ function drop(ev) {
 function dropDoing(ev) {
    ev.preventDefault();
    var data = ev.dataTransfer.getData("text");
-   if ((ev.target.childNodes.length == 1) && (endTime > 0) && ((ev.target.id.match('doing1')) || (ev.target.id.match('doing2')) || (ev.target.id.match('doing3')) || (ev.target.id.match('doing4'))))
+   if ((ev.target.childNodes.length == 3) && (endTime > 0) && ((ev.target.id.match('doing1')) || (ev.target.id.match('doing2')) || (ev.target.id.match('doing3')) || (ev.target.id.match('doing4'))))
       ev.target.appendChild(document.getElementById(data));
 }
 
 function allowDropDoing(ev) {
-   if ((ev.target.childNodes.length <= 1)) {
+   if ((ev.target.childNodes.length <= 3)) {
       ev.preventDefault();
+   }
+}
+
+function allowDropFooter(ev) {
+   var data = ev.dataTransfer.getData('text');
+   if ((ev.target.childNodes.length <= 3) || (data != 'training')) {
+      ev.preventDefault();
+   }
+}
+
+function dropFooter(ev) {
+   ev.preventDefault();
+   var data = ev.dataTransfer.getData("text");
+   if ((data == 'training') && (endTime > 0) && (ev.target.id.match('bottomDivFooter'))) {
+      ev.target.appendChild(document.getElementById(data));
+   }
+}
+
+function dragTraining(ev) {
+   if (endTime > 0) {
+      ev.dataTransfer.setData("text", ev.target.id);
    }
 }
