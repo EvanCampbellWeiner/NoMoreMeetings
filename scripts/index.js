@@ -39,7 +39,7 @@ class Employee {
 }
 const Strengths = [
    'Creativity',
-   'Curiousity',
+   'Curiosity',
    'Love of Learning',
    'Open-mindedness',
    'Perspective',
@@ -118,7 +118,7 @@ function initializeTasks() {
    taskArray[0].neutral[5] = 'Prudence';
    taskArray[0].neutral[6] = 'Beauty';
    taskArray[0].neutral[7] = 'Hope';
-   taskArray[0].semiterrible[0] = 'Curiousity';
+   taskArray[0].semiterrible[0] = 'Curiosity';
    taskArray[0].semiterrible[1] = 'Teamwork';
    taskArray[0].semiterrible[2] = 'Persistence';
    taskArray[0].semiterrible[3] = 'Self';
@@ -132,7 +132,7 @@ function initializeTasks() {
 
 
    taskArray[1] = new Task('proposal', taskTime, 0, true, false);
-   taskArray[1].verygood[0] = 'Curiousity';
+   taskArray[1].verygood[0] = 'Creativity';
    taskArray[1].good[0] = 'Learning';
    taskArray[1].good[1] = 'Open';
    taskArray[1].good[2] = 'Authenticity';
@@ -1014,6 +1014,24 @@ function calculateActualTime(strength, task) {
 function endTask(Task) {
    Task.completed = true;
    Task.percentComplete = 1;
+}
+
+function fireStaff() {
+   var game = document.getElementById('game');
+   var fireEmployee = document.getElementById('fireEmployee');
+   var bottomDiv = document.getElementById('footer');
+   game.classList.add('hidden');
+   fireEmployee.classList.remove('hidden');
+   bottomDiv.classList.add('hidden');
+
+
+   employeeArray.forEach(function(value, index) {
+      var select = document.getElementById('fireEmployee'+index);
+      if(select!=null){
+         // select.value = value.strength;
+      }
+   })
+
 }
 
 
