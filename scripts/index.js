@@ -105,7 +105,7 @@ var totalTimer;
 var startOfTimer = 0;
 var totalTime;
 var completedTasks = 0;
-var taskTime = 12;
+var taskTime = 15;
 var numberOfMeetings = 1;
 
 function initializeTasks() {
@@ -923,7 +923,7 @@ function callMeeting() {
 function endGame() {
    totalTimer = Math.floor(((Date.now() - startOfTimer) / 1000))
 
-   if(totalTimer > 360) {
+   if(totalTimer > 540) {
       var game = document.getElementById('game');
       var lost = document.getElementById('lost');
       game.classList.add('hidden');
