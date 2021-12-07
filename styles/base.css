@@ -1,6 +1,10 @@
 body {
    background-color:black;
    font-family: 'Architects Daughter', cursive;
+   display:flex;
+   flex-direction:column;
+   justify-content:start;
+   align-items:center;
 }
  
 h2 {
@@ -223,7 +227,7 @@ h2 {
 }
 
 select {
-   max-width:5em;
+   max-width:7em;
 }
 
 .callMeeting {
