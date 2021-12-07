@@ -108,6 +108,7 @@ var completedTasks = 0;
 var taskTime = 15;
 var numberOfMeetings = 1;
 var totalTimerInterval;
+var tooLittleTrainingCheck;
 
 function initializeTasks() {
    taskArray[0] = new Task("businesscard", taskTime, 0, true, false);
@@ -790,7 +791,8 @@ function updateEmployeeStrengths() {
 })
 }
 
-function mounted() {
+function mounted(speed = 1) {
+   taskTime = Math.floor(taskTime * speed);
    initializeTasks();
    let e1 = document.getElementById('employee1Select');
    let e2 = document.getElementById('employee2Select');
@@ -869,9 +871,11 @@ function endMeeting() {
 function updateTimer() {
    if(startOfTimer == 0 ) {
       startOfTimer = Date.now();
+      var timer = document.getElementById('timer');
+      timer.classList.remove('hidden');
    } else {
       var timer = document.getElementById('timer');
-      timer.textContent = Math.floor((Date.now() - startOfTimer) / 1000).toString();
+      timer.textContent = "Timer: "+Math.floor((Date.now() - startOfTimer) / 1000).toString();
    }
 }
 
@@ -939,13 +943,18 @@ function endGame() {
       var tooManyTasksCheck = false;
       var tooMuchTrainingCheck = false;
 
-      employeeArray.forEach(function(value, index) {
-         if(value.tasksCompleted > 8) {
-            tooManyTasksCheck = true;
-         } else if (value.changedStrength > 1) {
-            tooMuchTrainingCheck = true;
-         } 
-      })
+      var emp1 = employeeArray[0];
+      var emp2 = employeeArray[1];
+      var emp3 = employeeArray[2];
+      var emp4 = employeeArray[3];
+
+      if((emp1.tasksCompleted > 8) || (emp2.tasksCompleted > 8) || (emp3.tasksCompleted > 8) || (emp4.tasksCompleted > 8)) {
+         tooManyTasksCheck = true;
+      } else if ((emp1.trainingCount > 1) || (emp2.trainingCount > 1) || (emp3.trainingCount > 1) || (emp4.trainingCount > 1)) {
+         tooMuchTrainingCheck = true;
+      } else if ((emp1.trainingCount < 1) && (emp2.trainingCount < 1) && (emp3.trainingCount < 1) && (emp4.trainingCount < 1)) {
+         tooLittleTrainingCheck = true;
+      }
 
       if(tooManyTasksCheck) {
          var game = document.getElementById('game');
@@ -957,7 +966,13 @@ function endGame() {
          var training = document.getElementById('tooMuchTraining');
          game.classList.add('hidden');
          training.classList.remove('hidden');
-      } else {
+      } else if (tooLittleTrainingCheck) {
+         var game = document.getElementById('game');
+         var littleTraining = document.getElementById('tooLittleTraining');
+         game.classList.add('hidden');
+         littleTraining.classList.remove('hidden');
+      }
+      else {
          var game = document.getElementById('game');
          var win = document.getElementById('win');
          game.classList.add('hidden');
@@ -1130,7 +1145,6 @@ function calculateActualTime(strength, task) {
 
 
 function drag(ev) {
-   console.log(endTime);
    if (endTime > 0) {
       ev.dataTransfer.setData("text", ev.target.id);
    }

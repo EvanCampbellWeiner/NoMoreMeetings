@@ -34,8 +34,8 @@ h2 {
    height:80px;
 }
 
-.title.topTitle {
-   flex-direction:column;
+.title.topTitle h2 {
+   margin-right:10px;
 }
 
 #game {

@@ -15,7 +15,7 @@
    <section class="top">
       <div class="title topTitle">
          <h2>No More Meetings</h2>
-         <h2 id="timer"></h2>
+         <h2 id="timer" class="hidden"></h2>
       </div>
    </section>
    <!-- Start Screen -->
@@ -154,7 +154,8 @@
                <option value="Zest">Zest</option>
             </select>
          </div>
-         <button id="startButton" class="bottomDivButton" onclick="mounted()">Start Game</button>
+         <button id="startButton" class="bottomDivButton" onclick="mounted()">Start Game (normal)</button>
+         <button id="startSpeedRun" class="bottomDivButton" onclick="mounted(0.1)">Start Game (4x Speed)</button>
       </div>
    </section>
    <!-- Playing the Game Screen -->
@@ -396,8 +397,7 @@
       <div class="winDiv">
          <h1 class="winH1">YOU WIN!!!!!</h1>
          <p class="winP">You managed to finish all of the tasks in time and have successfully been promoted!</p>
-      </div>
-
+         <iframe src="https://giphy.com/embed/xNBcChLQt7s9a" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/win-xNBcChLQt7s9a">via GIPHY</a></p>
 
    </section>
     <!-- Game End Screen -->
@@ -416,6 +416,7 @@
          <p class="winP">You managed to finish all of the tasks but your employees complained about how many meetings you called!
             Your boss left you with a really nice reference letter and cited "professional differences" over the reason for your contract termination.
          </p>
+         <iframe src="https://giphy.com/embed/3seEmCpXZvhuPxHWaI" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/ShalitaGrant-work-life-staff-meeting-3seEmCpXZvhuPxHWaI">via GIPHY</a></p>
       </div>
    </section>
 
@@ -423,9 +424,21 @@
    <section id="tooMuchTraining" class="middle hidden">
       <div class="winDiv">
          <h1 class="winH1">YOU LOSE</h1>
-         <p class="winP">You managed to finish all of the tasks but you trained your employees too well! They decided to terminate your contract
-            and hired one of your employees to fill your role. 
+         <p class="winP">You managed to finish all of the tasks but you trained your employees too well! Your boss did not renew your contract
+            and instead hired one of your employees to fill the role. 
          </p>
+         <iframe src="https://giphy.com/embed/3oriNZoNvn73MZaFYk" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/spongebob-3oriNZoNvn73MZaFYk">via GIPHY</a></p>      </div>
+   </section>
+
+   <!-- Game End Screen -->
+   <section id="tooLittleTraining" class="middle hidden">
+      <div class="winDiv">
+         <h1 class="winH1">YOU WIN - KIND OF</h1>
+         <p class="winP">You managed to finish all of the tasks but you didn't provide training to any of your employees! This resulted in your entire team quitting
+            for better opportunities elsewhere. The good news? Your boss was so happy with the work you were able to complete that he said he will hire you once he is able
+            to find new staff. Hopefully that doesn't take too long!
+         </p>
+         <iframe src="https://giphy.com/embed/T1WqKkLY753dZghbu6" width="480" height="400" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/theoffice-T1WqKkLY753dZghbu6">via GIPHY</a></p>
       </div>
    </section>
 
@@ -437,6 +450,7 @@
             on them more than anyone else. This led to you getting fired and that employee taking your job. However that employee did not last long in their new position. 
             You taught them how to complete tasks, not manage them, after all. 
          </p>
+         <iframe src="https://giphy.com/embed/Kr8ARhN8O0y6JbCyF4" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/stickergiant-sticker-giant-Kr8ARhN8O0y6JbCyF4">via GIPHY</a></p>
       </div>
    </section>
    
