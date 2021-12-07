@@ -43,7 +43,7 @@ const Strengths = [
    'Creativity',
    'Curiosity',
    'Love of Learning',
-   'Open-mindedness',
+   'Open-Mindedness',
    'Perspective',
    'Authenticity',
    'Bravery',
@@ -107,11 +107,12 @@ var totalTime;
 var completedTasks = 0;
 var taskTime = 15;
 var numberOfMeetings = 1;
+var totalTimerInterval;
 
 function initializeTasks() {
    taskArray[0] = new Task("businesscard", taskTime, 0, true, false);
    taskArray[0].verygood[0] = 'Creativity';
-   taskArray[0].good[0] = 'Open';
+   taskArray[0].good[0] = 'Open-Mindedness';
    taskArray[0].good[1] = 'Perspective';
    taskArray[0].good[2] = 'Modesty';
    taskArray[0].good[3] = 'Zest';
@@ -140,7 +141,7 @@ function initializeTasks() {
    taskArray[1] = new Task('proposal', taskTime, 0, true, false);
    taskArray[1].verygood[0] = 'Creativity';
    taskArray[1].good[0] = 'Learning';
-   taskArray[1].good[1] = 'Open';
+   taskArray[1].good[1] = 'Open-Mindedness';
    taskArray[1].good[2] = 'Authenticity';
    taskArray[1].good[3] = 'Fairness';
    taskArray[1].good[4] = 'Religiousness';
@@ -185,12 +186,12 @@ function initializeTasks() {
    taskArray[2].semiterrible[4] = 'Forgiveness';
    taskArray[2].terrible[0] = 'Creativity';
    taskArray[2].terrible[1] = 'Curiousity';
-   taskArray[2].terrible[2] = 'Open';
+   taskArray[2].terrible[2] = 'Open-Mindedness';
    taskArray[2].terrible[3] = 'Bravery';
    taskArray[2].terrible[4] = 'Zest';
 
    taskArray[3] = new Task('client', taskTime, 0, false, false);
-   taskArray[3].verygood[0] = 'Open';
+   taskArray[3].verygood[0] = 'Open-Mindedness';
    taskArray[3].good[0] = 'Curiousity';
    taskArray[3].good[1] = 'Perspective';
    taskArray[3].good[2] = 'Kindness';
@@ -218,7 +219,7 @@ function initializeTasks() {
    taskArray[4] = new Task('investor', taskTime, 0, false, false);
    taskArray[4].verygood[0] = 'Perspective';
    taskArray[4].good[0] = 'Curiousity';
-   taskArray[4].good[1] = 'Open';
+   taskArray[4].good[1] = 'Open-Mindedness';
    taskArray[4].good[2] = 'Kindness';
    taskArray[4].good[3] = 'Social';
    taskArray[4].good[4] = 'Gratitude';
@@ -248,7 +249,7 @@ function initializeTasks() {
    taskArray[5].good[2] = 'Kindness';
    taskArray[5].good[3] = 'Social';
    taskArray[5].good[4] = 'Gratitude';
-   taskArray[5].neutral[0] = 'Open';
+   taskArray[5].neutral[0] = 'Open-Mindedness';
    taskArray[5].neutral[1] = 'Perspective';
    taskArray[5].neutral[2] = 'Zest';
    taskArray[5].neutral[3] = 'Love';
@@ -274,7 +275,7 @@ function initializeTasks() {
    taskArray[6].good[2] = 'Authenticity';
    taskArray[6].good[3] = 'Zest';
    taskArray[6].good[4] = 'Teamwork';
-   taskArray[6].neutral[0] = 'Open';
+   taskArray[6].neutral[0] = 'Open-Mindedness';
    taskArray[6].neutral[1] = 'Persistence';
    taskArray[6].neutral[2] = 'Fairness';
    taskArray[6].neutral[3] = 'Leadership';
@@ -314,7 +315,7 @@ function initializeTasks() {
    taskArray[7].semiterrible[3] = 'Social';
    taskArray[7].semiterrible[4] = 'Religiousness';
    taskArray[7].terrible[0] = 'Learning';
-   taskArray[7].terrible[1] = 'Open';
+   taskArray[7].terrible[1] = 'Open-Mindedness';
    taskArray[7].terrible[2] = 'Perspective';
    taskArray[7].terrible[3] = 'Humour';
    taskArray[7].terrible[4] = 'Forgiveness';
@@ -326,7 +327,7 @@ function initializeTasks() {
    taskArray[8].good[2] = 'Humour';
    taskArray[8].good[3] = 'Kindness';
    taskArray[8].good[4] = 'Social';
-   taskArray[8].neutral[0] = 'Open';
+   taskArray[8].neutral[0] = 'Open-Mindedness';
    taskArray[8].neutral[1] = 'Bravery';
    taskArray[8].neutral[2] = 'Persistence';
    taskArray[8].neutral[3] = 'Fairness';
@@ -367,7 +368,7 @@ function initializeTasks() {
    taskArray[9].semiterrible[4] = 'Prudence';
    taskArray[9].terrible[0] = 'Creativity';
    taskArray[9].terrible[1] = 'Learning';
-   taskArray[9].terrible[2] = 'Open';
+   taskArray[9].terrible[2] = 'Open-Mindedness';
    taskArray[9].terrible[3] = 'Bravery';
    taskArray[9].terrible[4] = 'Authenticity';
 
@@ -393,7 +394,7 @@ function initializeTasks() {
    taskArray[10].semiterrible[4] = 'Religiousness';
    taskArray[10].terrible[0] = 'Curiousity';
    taskArray[10].terrible[1] = 'Learning';
-   taskArray[10].terrible[2] = 'Open';
+   taskArray[10].terrible[2] = 'Open-Mindedness';
    taskArray[10].terrible[3] = 'Persistence';
    taskArray[10].terrible[4] = 'Modesty';
 
@@ -404,7 +405,7 @@ function initializeTasks() {
    taskArray[11].good[2] = 'Kindness';
    taskArray[11].good[3] = 'Social';
    taskArray[11].good[4] = 'Self';
-   taskArray[11].neutral[0] = 'Open';
+   taskArray[11].neutral[0] = 'Open-Mindedness';
    taskArray[11].neutral[1] = 'Perspective';
    taskArray[11].neutral[2] = 'Authenticity';
    taskArray[11].neutral[3] = 'Love';
@@ -436,7 +437,7 @@ function initializeTasks() {
    taskArray[12].neutral[3] = 'Social';
    taskArray[12].neutral[4] = 'Love';
    taskArray[12].neutral[5] = 'Persistence';
-   taskArray[12].neutral[6] = 'Open';
+   taskArray[12].neutral[6] = 'Open-Mindedness';
    taskArray[12].neutral[7] = 'Hope';
    taskArray[12].semiterrible[0] = 'Gratitude';
    taskArray[12].semiterrible[1] = 'Modesty';
@@ -456,7 +457,7 @@ function initializeTasks() {
    taskArray[13].good[2] = 'Religiousness';
    taskArray[13].good[3] = 'Hope';
    taskArray[13].good[4] = 'Humour';
-   taskArray[13].neutral[0] = 'Open';
+   taskArray[13].neutral[0] = 'Open-Mindedness';
    taskArray[13].neutral[1] = 'Perspective';
    taskArray[13].neutral[2] = 'Authenticity';
    taskArray[13].neutral[3] = 'Social';
@@ -482,7 +483,7 @@ function initializeTasks() {
    taskArray[14].good[2] = 'Humour';
    taskArray[14].good[3] = 'Kindness';
    taskArray[14].good[4] = 'Love';
-   taskArray[14].neutral[0] = 'Open';
+   taskArray[14].neutral[0] = 'Open-Mindedness';
    taskArray[14].neutral[1] = 'Authenticity';
    taskArray[14].neutral[2] = 'Perspective';
    taskArray[14].neutral[3] = 'Forgiveness';
@@ -522,7 +523,7 @@ function initializeTasks() {
    taskArray[15].semiterrible[3] = 'Gratitude';
    taskArray[15].semiterrible[4] = 'Religiousness';
    taskArray[15].terrible[0] = 'Learning';
-   taskArray[15].terrible[1] = 'Open';
+   taskArray[15].terrible[1] = 'Open-Mindedness';
    taskArray[15].terrible[2] = 'Love';
    taskArray[15].terrible[3] = 'Fairness';
    taskArray[15].terrible[4] = 'Leadership';
@@ -534,7 +535,7 @@ function initializeTasks() {
    taskArray[16].good[2] = 'Persistence';
    taskArray[16].good[3] = 'Love';
    taskArray[16].good[4] = 'Gratitude';
-   taskArray[16].neutral[0] = 'Open';
+   taskArray[16].neutral[0] = 'Open-Mindedness';
    taskArray[16].neutral[1] = 'Bravery';
    taskArray[16].neutral[2] = 'Kindness';
    taskArray[16].neutral[3] = 'Leadership';
@@ -560,7 +561,7 @@ function initializeTasks() {
    taskArray[17].good[2] = 'Authenticity';
    taskArray[17].good[3] = 'Persistence';
    taskArray[17].good[4] = 'Social';
-   taskArray[17].neutral[0] = 'Open';
+   taskArray[17].neutral[0] = 'Open-Mindedness';
    taskArray[17].neutral[1] = 'Zest';
    taskArray[17].neutral[2] = 'Fairness';
    taskArray[17].neutral[3] = 'Leadership';
@@ -581,7 +582,7 @@ function initializeTasks() {
 
    taskArray[18] = new Task('minesweeper', taskTime, 0, true, false);
    taskArray[18].verygood[0] = 'Self';
-   taskArray[18].good[0] = 'Open';
+   taskArray[18].good[0] = 'Open-Mindedness';
    taskArray[18].good[1] = 'Bravery';
    taskArray[18].good[2] = 'Social';
    taskArray[18].good[3] = 'Fairness';
@@ -612,7 +613,7 @@ function initializeTasks() {
    taskArray[19].good[2] = 'Kindness';
    taskArray[19].good[3] = 'Love';
    taskArray[19].good[4] = 'Gratitude';
-   taskArray[19].neutral[0] = 'Open';
+   taskArray[19].neutral[0] = 'Open-Mindedness';
    taskArray[19].neutral[1] = 'Authenticity';
    taskArray[19].neutral[2] = 'Persistence';
    taskArray[19].neutral[3] = 'Social';
@@ -638,7 +639,7 @@ function initializeTasks() {
    taskArray[20].good[2] = 'Social';
    taskArray[20].good[3] = 'Fairness';
    taskArray[20].good[4] = 'Religiousness';
-   taskArray[20].neutral[0] = 'Open';
+   taskArray[20].neutral[0] = 'Open-Mindedness';
    taskArray[20].neutral[1] = 'Authenticity';
    taskArray[20].neutral[2] = 'Bravery';
    taskArray[20].neutral[3] = 'Persistence';
@@ -664,7 +665,7 @@ function initializeTasks() {
    taskArray[21].good[2] = 'Zest';
    taskArray[21].good[3] = 'Love';
    taskArray[21].good[4] = 'Beauty';
-   taskArray[21].neutral[0] = 'Open';
+   taskArray[21].neutral[0] = 'Open-Mindedness';
    taskArray[21].neutral[1] = 'Bravery';
    taskArray[21].neutral[2] = 'Social';
    taskArray[21].neutral[3] = 'Leadership';
@@ -691,7 +692,7 @@ function initializeTasks() {
    taskArray[22].good[3] = 'Zest';
    taskArray[22].good[4] = 'Social';
    taskArray[22].neutral[0] = 'Curiousity';
-   taskArray[22].neutral[1] = 'Open';
+   taskArray[22].neutral[1] = 'Open-Mindedness';
    taskArray[22].neutral[2] = 'Teamwork';
    taskArray[22].neutral[3] = 'Forgiveness';
    taskArray[22].neutral[4] = 'Prudence';
@@ -717,7 +718,7 @@ function initializeTasks() {
    taskArray[23].good[3] = 'Love';
    taskArray[23].good[4] = 'Social';
    taskArray[23].neutral[0] = 'Learning';
-   taskArray[23].neutral[1] = 'Open';
+   taskArray[23].neutral[1] = 'Open-Mindedness';
    taskArray[23].neutral[2] = 'Fairness';
    taskArray[23].neutral[3] = 'Leadership';
    taskArray[23].neutral[4] = 'Teamwork';
@@ -742,7 +743,7 @@ function initializeTasks() {
    taskArray[24].good[0] = 'Curiousity';
    taskArray[24].good[1] = 'Perspective';
    taskArray[24].good[2] = 'Social';
-   taskArray[24].good[3] = 'Open';
+   taskArray[24].good[3] = 'Open-Mindedness';
    taskArray[24].good[4] = 'Hope';
    taskArray[24].good[5] = 'Prudence';
    taskArray[24].good[6] = 'Authenticity';
@@ -858,7 +859,7 @@ function endMeeting() {
    endTime = 0;
    
    if(startOfTimer == 0) {
-      setInterval('updateTimer()', 100);
+      totalTimerInterval = setInterval('updateTimer()', 100);
    }
 
    beginLoop();
@@ -922,8 +923,8 @@ function callMeeting() {
 
 function endGame() {
    totalTimer = Math.floor(((Date.now() - startOfTimer) / 1000))
-
-   if(totalTimer > 540) {
+   clearInterval(totalTimerInterval);
+   if(totalTimer > 310) {
       var game = document.getElementById('game');
       var lost = document.getElementById('lost');
       game.classList.add('hidden');
@@ -939,9 +940,9 @@ function endGame() {
       var tooMuchTrainingCheck = false;
 
       employeeArray.forEach(function(value, index) {
-         if(value.tasksCompleted > 9) {
+         if(value.tasksCompleted > 8) {
             tooManyTasksCheck = true;
-         } else if (value.changedStrength > 3) {
+         } else if (value.changedStrength > 1) {
             tooMuchTrainingCheck = true;
          } 
       })
@@ -953,7 +954,7 @@ function endGame() {
          tooManyTasks.classList.remove('hidden');
       } else if (tooMuchTrainingCheck) {
          var game = document.getElementById('game');
-         var training = document.getElementById('training');
+         var training = document.getElementById('tooMuchTraining');
          game.classList.add('hidden');
          training.classList.remove('hidden');
       } else {
@@ -962,6 +963,19 @@ function endGame() {
          game.classList.add('hidden');
          win.classList.remove('hidden');
       }
+
+      var stats = document.getElementById('stats');
+      var emp1Stats = document.getElementById('employee1Stats');
+      var emp2Stats = document.getElementById('employee2Stats');
+      var emp3Stats = document.getElementById('employee3Stats');
+      var emp4Stats = document.getElementById('employee4Stats');
+
+
+      stats.classList.remove('hidden');
+      emp1Stats.innerHTML = "Employee 1 completed " + employeeArray[0].tasksCompleted + ' tasks and got ' + employeeArray[0].trainingCount + ' training changes.';
+      emp2Stats.innerHTML = "Employee 2 completed " + employeeArray[1].tasksCompleted + ' tasks and got ' + employeeArray[1].trainingCount + ' training changes.';
+      emp3Stats.innerHTML = "Employee 3 completed " + employeeArray[2].tasksCompleted + ' tasks and got ' + employeeArray[2].trainingCount + ' training changes.';
+      emp4Stats.innerHTML = "Employee 4 completed " + employeeArray[3].tasksCompleted + ' tasks and got ' + employeeArray[3].trainingCount + ' training changes.';
 
 
    }
@@ -1139,14 +1153,12 @@ function drop(ev) {
 function dropDoing(ev) {
    ev.preventDefault();
    var data = ev.dataTransfer.getData("text");
-   console.log(ev.target.childNodes.length);
-   console.log(ev.target.id)
    if ((ev.target.childNodes.length == 3) && (endTime > 0) && ((ev.target.id.match('doing1')) || (ev.target.id.match('doing2')) || (ev.target.id.match('doing3')) || (ev.target.id.match('doing4'))))
       ev.target.appendChild(document.getElementById(data));
 }
 
 function allowDropDoing(ev) {
-   if ((ev.target.childNodes.length >= 1)) {
+   if ((ev.target.childNodes.length >= 3)) {
       ev.preventDefault();
    }
 }

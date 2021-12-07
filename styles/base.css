@@ -41,6 +41,7 @@ h2 {
 #game {
    background-color:white;
    height:660px;
+   max-width:100%;
 }
 
 #start {
@@ -49,9 +50,27 @@ h2 {
    align-items:center;
 }
 
+#credits {
+   color:white;
+   display:flex;
+   flex-direction:column;
+   justify-content:space-around;
+   align-items:space-around;
+}
+
+#credits a {
+   color:cadetblue;
+}
+
 .middle {
    display:flex;
    flex-direction: column;
+}
+
+#stats {
+   background-color:black;
+   color:white;
+   padding:20px;
 }
 
 .notes {
