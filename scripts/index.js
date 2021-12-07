@@ -27,8 +27,10 @@ class Task {
 class Employee {
    strength;
    tasksCompleted;
+   changedStrength = 0;
    currentTask;
    name;
+   trainingCount = 0;
 
    constructor(name, strength) {
       this.name = name;
@@ -104,6 +106,7 @@ var startOfTimer = 0;
 var totalTime;
 var completedTasks = 0;
 var taskTime = 12;
+var numberOfMeetings = 1;
 
 function initializeTasks() {
    taskArray[0] = new Task("businesscard", taskTime, 0, true, false);
@@ -780,6 +783,7 @@ function updateEmployeeStrengths() {
       let d = document.querySelector('div.employee' + (tempIndex) + 'DoingStrength')
       if ((d != null) && (d.innerHTML != value.strength)) {
          d.innerHTML = value.strength;
+         value.changedStrength += 1;
       }
 
 })
@@ -919,16 +923,47 @@ function callMeeting() {
 function endGame() {
    totalTimer = Math.floor(((Date.now() - startOfTimer) / 1000))
 
-   if(totalTimer < 360) {
-      var game = document.getElementById('game');
-      var win = document.getElementById('win');
-      game.classList.add('hidden');
-      win.classList.remove('hidden');
-   } else {
+   if(totalTimer > 360) {
       var game = document.getElementById('game');
       var lost = document.getElementById('lost');
       game.classList.add('hidden');
       lost.classList.remove('hidden');
+   } else if(numberOfMeetings > 8) {
+      var game = document.getElementById('game');
+      var meetings = document.getElementById('meetings');
+      game.classList.add('hidden');
+      meetings.classList.remove('hidden');
+   }
+   else {
+      var tooManyTasksCheck = false;
+      var tooMuchTrainingCheck = false;
+
+      employeeArray.forEach(function(value, index) {
+         if(value.tasksCompleted > 9) {
+            tooManyTasksCheck = true;
+         } else if (value.changedStrength > 3) {
+            tooMuchTrainingCheck = true;
+         } 
+      })
+
+      if(tooManyTasksCheck) {
+         var game = document.getElementById('game');
+         var tooManyTasks = document.getElementById('tooManyTasks');
+         game.classList.add('hidden');
+         tooManyTasks.classList.remove('hidden');
+      } else if (tooMuchTrainingCheck) {
+         var game = document.getElementById('game');
+         var training = document.getElementById('training');
+         game.classList.add('hidden');
+         training.classList.remove('hidden');
+      } else {
+         var game = document.getElementById('game');
+         var win = document.getElementById('win');
+         game.classList.add('hidden');
+         win.classList.remove('hidden');
+      }
+
+
    }
 
 }
@@ -947,19 +982,19 @@ function updateTaskPercentComplete(task_id, endTime) {
 
 function updateProgress() {
    if ((currentTask1 != null) && (taskArray[currentTask1].percentComplete + (((Date.now() - startTime) / 1000) / taskArray[currentTask1].actualTime) > 1)) {
-      (currentTask1 == 24) ? finishTask(currentTask1, 1) : finishTask(currentTask1);
+    finishTask(currentTask1, 1);
       currentTask1 = null;
    }
    if ((currentTask2 != null) && (taskArray[currentTask2].percentComplete + (((Date.now() - startTime) / 1000) / taskArray[currentTask2].actualTime) > 1)) {
-      (currentTask2 == 24) ? finishTask(currentTask2, 2) : finishTask(currentTask2);
+     finishTask(currentTask2, 2);
       currentTask2 = null;
    }
    if ((currentTask3 != null) && (taskArray[currentTask3].percentComplete + (((Date.now() - startTime) / 1000) / taskArray[currentTask3].actualTime) > 1)) {
-      (currentTask3 == 24) ? finishTask(currentTask3, 3) : finishTask(currentTask3);
+     finishTask(currentTask3, 3);
       currentTask3 = null;
    }
    if ((currentTask4 != null) && (taskArray[currentTask4].percentComplete + (((Date.now() - startTime) / 1000) / taskArray[currentTask4].actualTime) > 1)) {
-      (currentTask4 == 24) ? finishTask(currentTask4, 4) : finishTask(currentTask4);
+   finishTask(currentTask4, 4);
       currentTask4 = null;
    }
 
@@ -1020,6 +1055,8 @@ function finishTask(task_id, currentTask = 0) {
       var footerControls = document.getElementById('footerControls');
       var trainingSelect = document.getElementById('trainingSelect');
       employeeArray[employee].strength = trainingSelect.value;
+      employeeArray[employee].trainingCount += 1;
+      employeeArray[employee].completedTasks += 1;
       footerControls.appendChild(task);
       updateEmployeeStrengths();
    } 
@@ -1032,6 +1069,7 @@ function finishTask(task_id, currentTask = 0) {
       var done = document.getElementById('done');
    
       taskComplete.innerHTML = "COMPLETE";
+      employeeArray[employee].tasksCompleted += 1;
       done.appendChild(task);
          completedTasks++;
    }
